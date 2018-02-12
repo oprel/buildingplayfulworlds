@@ -1,27 +1,30 @@
 ﻿ using UnityEngine;
  using UnityEngine.UI;
  using System.Collections;
- 
+using kode80.PixelRender;
+
  public class Underwater: MonoBehaviour {
 	public float waterHeight;
 	public RawImage img;
+	public Color underwaterColor;
 	
 	private bool isUnderwater;
 	private Color normalColor;
-	private Color underwaterColor;
 	private Camera camera;
 	private Color targetColor;
 	private float targetDensity;
-	private float transitionSpeed = 100;
+	private float transitionSpeed = 20;
+	private Color skyColor;
 
 	
 	// Use this for initialization
 	void Start () {
 		camera = transform.GetComponent<Camera>();
 		normalColor = new Color (1f, 1f, 1f, 1f);
-		underwaterColor = new Color32(0x63,0x73,0xB4,0xFF);
 		targetColor = normalColor;
 		targetDensity=0f;
+		skyColor=camera.backgroundColor;
+		RenderSettings.fogColor=underwaterColor;
 	}
 	
 	// Update is called once per frame
@@ -41,14 +44,17 @@
 	//img.color=normalColor;
 	targetDensity=0f;
 	targetColor=normalColor;
+	gameObject.GetComponent<PixelOutlineEffect>().enabled=true;
+	camera.backgroundColor=skyColor;
 	
 	}
  
 	void SetUnderwater () {
 		//camera.farClipPlane=10;
 		//img.color=underwaterColor;
-		targetDensity = 1;
+		targetDensity = .2f;
 		targetColor = underwaterColor;
-	
+		gameObject.GetComponent<PixelOutlineEffect>().enabled=false;
+		camera.backgroundColor=underwaterColor;
 	}
  }

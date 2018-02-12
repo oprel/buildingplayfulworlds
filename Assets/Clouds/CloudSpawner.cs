@@ -21,6 +21,8 @@ public class CloudSpawner : MonoBehaviour {
 			c.transform.parent = gameObject.transform;
 			c.transform.localScale*=Random.Range(.1f,4);
 			c.GetComponent<Renderer>().material.mainTexture=images[Random.Range(0,images.Length)];
+			Vector2 orientation = new Vector2(Random.Range(-1,1),Random.Range(-1,1));
+			c.GetComponent<Renderer>().material.SetTextureScale("_MainTex", orientation);
 			c.GetComponent<CircleOrigin>().speed = Random.Range(8,10);
 		}
 	}
