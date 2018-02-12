@@ -72,7 +72,9 @@ ModelImporter:
     2100000: wood
     2100002: steel
     2300000: polySurface2
+    2300002: //RootNode
     3300000: polySurface2
+    3300002: //RootNode
     4300000: polySurface2
     9500000: //RootNode
   externalObjects: {}

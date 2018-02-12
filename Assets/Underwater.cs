@@ -11,8 +11,8 @@
 	private Color underwaterColor;
 	private Camera camera;
 	private Color targetColor;
-	private float targetClip;
-	private float transitionSpeed = 10;
+	private float targetDensity;
+	private float transitionSpeed = 100;
 
 	
 	// Use this for initialization
@@ -21,7 +21,7 @@
 		normalColor = new Color (1f, 1f, 1f, 1f);
 		underwaterColor = new Color32(0x63,0x73,0xB4,0xFF);
 		targetColor = normalColor;
-		targetClip=1000;
+		targetDensity=0f;
 	}
 	
 	// Update is called once per frame
@@ -32,13 +32,14 @@
 			if (!isUnderwater) SetNormal ();
 		}
 		img.color=Color.Lerp(img.color,targetColor,Time.deltaTime * transitionSpeed);
-		camera.farClipPlane = Mathf.Lerp(camera.farClipPlane,targetClip,Time.deltaTime * transitionSpeed);
+		//camera.farClipPlane = Mathf.Lerp(camera.farClipPlane,targetClip,Time.deltaTime * transitionSpeed);
+		RenderSettings.fogDensity = Mathf.Lerp(RenderSettings.fogDensity,targetDensity,Time.deltaTime * transitionSpeed);
 	}
  
 	void SetNormal () {
 	//camera.farClipPlane=1000;
 	//img.color=normalColor;
-	targetClip=1000;
+	targetDensity=0f;
 	targetColor=normalColor;
 	
 	}
@@ -46,7 +47,7 @@
 	void SetUnderwater () {
 		//camera.farClipPlane=10;
 		//img.color=underwaterColor;
-		targetClip = 20;
+		targetDensity = 1;
 		targetColor = underwaterColor;
 	
 	}
