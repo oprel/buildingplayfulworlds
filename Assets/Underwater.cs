@@ -40,7 +40,7 @@ using kode80.PixelRender;
 	}
  
 	void SetNormal () {
-	//camera.farClipPlane=1000;
+	camera.farClipPlane=1000;
 	//img.color=normalColor;
 	targetDensity=0f;
 	targetColor=normalColor;
@@ -50,11 +50,11 @@ using kode80.PixelRender;
 	}
  
 	void SetUnderwater () {
-		//camera.farClipPlane=10;
+		camera.farClipPlane=100;
 		//img.color=underwaterColor;
-		targetDensity = .2f;
+		targetDensity = .1f;
 		targetColor = underwaterColor;
 		gameObject.GetComponent<PixelOutlineEffect>().enabled=false;
-		camera.backgroundColor=underwaterColor;
+		camera.backgroundColor=underwaterColor*1.33f;
 	}
  }

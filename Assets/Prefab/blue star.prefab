@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 65213184283748894}
   m_Layer: 0
   m_Name: blue star
-  m_TagString: Untagged
+  m_TagString: Shell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339602578957492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.41, y: 5.1445084, z: -35.56}
+  m_LocalPosition: {x: -3.2838306, y: -10.064142, z: 28.50902}
   m_LocalScale: {x: 0.3587327, y: 0.35873264, z: 0.35873264}
   m_Children: []
   m_Father: {fileID: 0}
