@@ -154,6 +154,11 @@
 				float4 albedo = tex2D(_MainTex, input.texCoord.xy);
 
 			    float4 col = _Color * foamRamp * albedo;
+				/*
+				half screendist = input.screenPos.z / input.screenPos.w;
+				float distfactor= 200000;
+				col.a = lerp(0,col.a, saturate(screendist * screendist * distfactor));
+				*/
                 return col;
 			}
 
