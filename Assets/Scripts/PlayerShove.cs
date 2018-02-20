@@ -14,7 +14,7 @@ public class PlayerShove : MonoBehaviour {
 	void Update () {
 		parent = transform.parent.transform.rotation;
 		if (Input.GetButton("Fire1") && !shoving){
-			Debug.Log("Updating arms");
+			//Debug.Log("Updating arms");
 			transform.rotation = Quaternion.Slerp(transform.rotation, parent * targetRot, Time.deltaTime * shoveSpeed);
 		}else{
 			transform.rotation = Quaternion.Slerp(transform.rotation, parent, Time.deltaTime * returnSpeed);
