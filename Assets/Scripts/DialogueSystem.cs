@@ -35,7 +35,7 @@ public class DialogueSystem : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         DialogueObject obj = other.GetComponent<DialogueObject>();
-         if (obj && obj.DialogueLines != currentScript) {
+         if (obj && obj.DialogueLines[0] != currentScript[0]) {
             if (currentScript[0] != ""){StopCoroutine( previousLines);};
             previousLines = StartCoroutine( ShowText(obj.DialogueLines, obj.textColor) );
             hitLocation = transform.position;
