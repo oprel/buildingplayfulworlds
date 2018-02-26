@@ -21,9 +21,17 @@ public class PlayerShells : MonoBehaviour {
 		display.text = displayAmount.ToString();
 	}
 
+	void OnCollisionEnter (Collision other) {
+	
+		if (other.gameObject.tag == "Shell") {
+		Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+			}
+	
+	}
+
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "Shell"){
-			Destroy(other.gameObject);
+			//Destroy(other.gameObject);
 			amount+=1;
 		}
 	}
