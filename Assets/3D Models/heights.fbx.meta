@@ -1,50 +1,16 @@
 fileFormatVersion: 2
-guid: e4b747ca39e33cd43a9216ca61761755
-timeCreated: 1519122239
+guid: e049f7f0a635f484da66264495e6ee32
+timeCreated: 1520189345
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCylinder1
-    100004: pCylinder2
-    100006: pCylinder4
-    100008: transform1
-    100010: transform2
-    100012: clearing:pCylinder1
-    100014: clearing:pCylinder2
-    100016: clearing:transform1
-    100018: clearing:transform2
-    100020: clearing:pCylinder3
-    100022: clearing:transform3
-    100024: clearing:transform4
-    100026: heights:pCylinder1
     400000: //RootNode
-    400002: pCylinder1
-    400004: pCylinder2
-    400006: pCylinder4
-    400008: transform1
-    400010: transform2
-    400012: clearing:pCylinder1
-    400014: clearing:pCylinder2
-    400016: clearing:transform1
-    400018: clearing:transform2
-    400020: clearing:pCylinder3
-    400022: clearing:transform3
-    400024: clearing:transform4
-    400026: heights:pCylinder1
     2100000: lambert1
-    2300000: pCylinder4
-    2300002: clearing:pCylinder2
-    2300004: clearing:pCylinder3
-    2300006: //RootNode
-    3300000: pCylinder4
-    3300002: clearing:pCylinder2
-    3300004: clearing:pCylinder3
-    3300006: //RootNode
-    4300000: pCylinder4
-    4300002: clearing:pCylinder2
-    4300004: clearing:pCylinder3
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCylinder1
   externalObjects: {}
   materials:
     importMaterials: 1
