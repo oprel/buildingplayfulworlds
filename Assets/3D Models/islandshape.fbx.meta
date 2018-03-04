@@ -6,11 +6,40 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: boulder1
+    100004: boulder2
+    100006: boulder3
+    100008: boulder4
+    100010: cliff1
+    100012: islandShape
     400000: //RootNode
+    400002: boulder1
+    400004: boulder2
+    400006: boulder3
+    400008: boulder4
+    400010: cliff1
+    400012: islandShape
     2100000: lambert1
     2300000: //RootNode
+    2300002: boulder1
+    2300004: boulder2
+    2300006: boulder3
+    2300008: boulder4
+    2300010: cliff1
+    2300012: islandShape
     3300000: //RootNode
+    3300002: boulder1
+    3300004: boulder2
+    3300006: boulder3
+    3300008: boulder4
+    3300010: cliff1
+    3300012: islandShape
     4300000: islandShape
+    4300002: cliff1
+    4300004: boulder1
+    4300006: boulder2
+    4300008: boulder3
+    4300010: boulder4
   externalObjects: {}
   materials:
     importMaterials: 1

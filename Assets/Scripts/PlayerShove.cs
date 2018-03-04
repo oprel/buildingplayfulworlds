@@ -38,19 +38,12 @@ public class PlayerShove : MonoBehaviour {
 		Rigidbody rb = other.GetComponent<Rigidbody>();
 		if (rb){
 			rb.AddForceAtPosition(impactVector, transform.position);
-			Debug.Log("added force");
+			//Debug.Log("added force");
 		}
 	}
 
 
-	void OnCollisionEnter(Collision collision){
-		Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-		if (rb){
-			rb.AddForceAtPosition(impactVector, transform.position);
-			Debug.Log("added force");
-		}
-	}
-
+	
 	
 
 }
