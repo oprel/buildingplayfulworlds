@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour {
 
-	public float speed;
+	public Vector3 direction;
 
 	void Update () {
-	 	transform.position += transform.forward * Time.deltaTime * speed;	
+
+	 	transform.localPosition += transform.rotation * direction * Time.deltaTime;	
 	}
 }

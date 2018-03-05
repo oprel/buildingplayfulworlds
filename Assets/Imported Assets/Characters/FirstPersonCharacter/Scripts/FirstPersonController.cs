@@ -28,6 +28,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+        public bool allowMovement = true;
         public Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -130,6 +131,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.deltaTime);
 
+            m_CharacterController.enabled = allowMovement;
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
