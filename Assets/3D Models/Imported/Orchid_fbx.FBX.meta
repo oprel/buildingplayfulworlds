@@ -1,0 +1,228 @@
+fileFormatVersion: 2
+guid: b019754a67dd14e44a84e78b9628d24d
+timeCreated: 1520458866
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cylinder001
+    100002: Cylinder002
+    100004: Cylinder003
+    100006: Cylinder004
+    100008: Cylinder005
+    100010: Cylinder007
+    100012: Cylinder008
+    100014: Cylinder009
+    100016: Line008
+    100018: Line013
+    100020: Line015
+    100022: Object001
+    100024: Orchid_002
+    100026: Orchid_003
+    100028: Orchid_004
+    100030: Orchid_01
+    100032: //RootNode
+    100034: Plane002
+    100036: Plane003
+    100038: Plane004
+    100040: Sphere001
+    100042: Sphere002
+    100044: Sphere003
+    100046: Sphere004
+    100048: Sphere005
+    100050: Torus001
+    100052: v1_v003
+    400000: Cylinder001
+    400002: Cylinder002
+    400004: Cylinder003
+    400006: Cylinder004
+    400008: Cylinder005
+    400010: Cylinder007
+    400012: Cylinder008
+    400014: Cylinder009
+    400016: Line008
+    400018: Line013
+    400020: Line015
+    400022: Object001
+    400024: Orchid_002
+    400026: Orchid_003
+    400028: Orchid_004
+    400030: Orchid_01
+    400032: //RootNode
+    400034: Plane002
+    400036: Plane003
+    400038: Plane004
+    400040: Sphere001
+    400042: Sphere002
+    400044: Sphere003
+    400046: Sphere004
+    400048: Sphere005
+    400050: Torus001
+    400052: v1_v003
+    2100000: 'Material #0'
+    2100002: 'Material #26'
+    2100004: 'Material #37'
+    2100006: 'Material #38'
+    2100008: leaf
+    2100010: wood
+    2100012: 'Material #47'
+    2100014: 'Material #50'
+    2100016: 'Material #51'
+    2300000: Cylinder001
+    2300002: Cylinder002
+    2300004: Cylinder003
+    2300006: Cylinder004
+    2300008: Cylinder005
+    2300010: Cylinder007
+    2300012: Cylinder008
+    2300014: Cylinder009
+    2300016: Line008
+    2300018: Line013
+    2300020: Line015
+    2300022: Object001
+    2300024: Orchid_002
+    2300026: Orchid_003
+    2300028: Orchid_004
+    2300030: Orchid_01
+    2300032: Plane002
+    2300034: Plane003
+    2300036: Plane004
+    2300038: Sphere001
+    2300040: Sphere002
+    2300042: Sphere003
+    2300044: Sphere004
+    2300046: Sphere005
+    2300048: Torus001
+    2300050: v1_v003
+    3300000: Cylinder001
+    3300002: Cylinder002
+    3300004: Cylinder003
+    3300006: Cylinder004
+    3300008: Cylinder005
+    3300010: Cylinder007
+    3300012: Cylinder008
+    3300014: Cylinder009
+    3300016: Line008
+    3300018: Line013
+    3300020: Line015
+    3300022: Object001
+    3300024: Orchid_002
+    3300026: Orchid_003
+    3300028: Orchid_004
+    3300030: Orchid_01
+    3300032: Plane002
+    3300034: Plane003
+    3300036: Plane004
+    3300038: Sphere001
+    3300040: Sphere002
+    3300042: Sphere003
+    3300044: Sphere004
+    3300046: Sphere005
+    3300048: Torus001
+    3300050: v1_v003
+    4300000: Cylinder008
+    4300002: Line008
+    4300004: Torus001
+    4300006: Cylinder007
+    4300008: Cylinder005
+    4300010: Cylinder004
+    4300012: Plane003
+    4300014: Cylinder001
+    4300016: Cylinder002
+    4300018: Sphere001
+    4300020: Sphere002
+    4300022: Cylinder003
+    4300024: Plane004
+    4300026: Sphere003
+    4300028: Sphere004
+    4300030: Sphere005
+    4300032: Line015
+    4300034: Cylinder009
+    4300036: Plane002
+    4300038: Orchid_004
+    4300040: Orchid_01
+    4300042: Orchid_002
+    4300044: Orchid_003
+    4300046: Object001
+    4300048: v1_v003
+    4300050: Line013
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
