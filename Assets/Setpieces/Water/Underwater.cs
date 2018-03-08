@@ -15,6 +15,7 @@ using kode80.PixelRender;
 	private float targetDensity;
 	private float transitionSpeed = 20;
 	private Color skyColor;
+	private float defaultClip;
 
 	
 	// Use this for initialization
@@ -25,6 +26,7 @@ using kode80.PixelRender;
 		targetDensity=0f;
 		skyColor=camera.backgroundColor;
 		RenderSettings.fogColor=underwaterColor;
+		defaultClip = camera.farClipPlane;
 	}
 	
 	// Update is called once per frame
@@ -40,7 +42,7 @@ using kode80.PixelRender;
 	}
  
 	void SetNormal () {
-	camera.farClipPlane=1000;
+	camera.farClipPlane=defaultClip;
 	//img.color=normalColor;
 	targetDensity=0f;
 	targetColor=normalColor;

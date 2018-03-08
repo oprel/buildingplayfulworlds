@@ -22,25 +22,38 @@ namespace kode80.PixelRender
 	public class IrisWipeEffect : MonoBehaviour 
 	{
 		public Vector2 center;
-		[Range( 0.0f, 1.0f)]
+		[Range( -0.5f, 1.0f)]
 		public float position = 0.5f;
+		public float animationSpeed;
 		private Material _material;
+		public float target;
+
+		private float animTime =50f;
+		private float currentAnimTime;
 
 		void Start()
-		{
+		{	
+			target=1;
 			if( Application.isPlaying)
 			{
-				position = 0.0f;
+				position = -.1f;
 			}
 		}
 
+	
 		void Update()
 		{
-			if( position < 1.0f)
+			if( target-position>.1f)
 			{
-				position += (1.0f / 1.5f) * Time.deltaTime;
+				currentAnimTime+=Time.deltaTime;
+				float t = currentAnimTime / animTime;
+				t = Mathf.Sin(t * Mathf.PI * 0.5f);
+				position = Mathf.Lerp(position,target,t);
+			}else{
+				currentAnimTime=0;
 			}
 		}
+
 
 		void OnRenderImage( RenderTexture source, RenderTexture destination)
 		{
