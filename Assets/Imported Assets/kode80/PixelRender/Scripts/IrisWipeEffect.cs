@@ -18,13 +18,13 @@ using System.Collections;
 
 namespace kode80.PixelRender
 {
-	[ExecuteInEditMode]
+	//[ExecuteInEditMode]
 	public class IrisWipeEffect : MonoBehaviour 
 	{
 		public Vector2 center;
 		[Range( -0.5f, 1.0f)]
 		public float position = 0.5f;
-		public float animationSpeed;
+		public float animationSpeed = .2f;
 		private Material _material;
 		public float target;
 
@@ -43,11 +43,12 @@ namespace kode80.PixelRender
 	
 		void Update()
 		{
-			if( target-position>.1f)
+			if( Mathf.Abs(target-position)>.1f)
 			{
-				currentAnimTime+=Time.deltaTime;
+				currentAnimTime+=Time.deltaTime*animationSpeed;
 				float t = currentAnimTime / animTime;
 				t = Mathf.Sin(t * Mathf.PI * 0.5f);
+				//t = t*t*t * (t * (6f*t - 15f) + 10f);
 				position = Mathf.Lerp(position,target,t);
 			}else{
 				currentAnimTime=0;

@@ -7,15 +7,30 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Teleporter : MonoBehaviour {
 	public Object scene;
-	public Camera cam;
+	public Camera pixelCam;
+
+	private IrisWipeEffect wipe;
+	private bool porting;
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "Player"){
-			 IrisWipeEffect wipe = cam.GetComponent<IrisWipeEffect>();
+
+		if (other.tag == "Player" && !porting){
+			porting=true;
+			if (!pixelCam)
+				return;
+			 wipe = pixelCam.GetComponent<IrisWipeEffect>();
 			 wipe.target=-1;
-			 while (wipe.position>0);
-			SceneManager.LoadScene(scene.name);
+			StartCoroutine(CheckIris());
 		}
 	}
 
+	IEnumerator CheckIris(){
+		int i = 0;
+		while (i < 60){
+		 if (wipe.position<0)
+			SceneManager.LoadScene(scene.name);
+			yield return new WaitForSeconds(1f);
+		}
+
+	}
 }

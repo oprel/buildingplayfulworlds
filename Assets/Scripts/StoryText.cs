@@ -29,9 +29,9 @@ public class StoryText : MonoBehaviour {
             str = "";
             while( i < script[j].Length ){
                 str += script[j][i++];
-                yield return StartCoroutine(WaitForRealTime(.1f));
+                yield return StartCoroutine(WaitForRealTime(.05f));
             }
-            yield return StartCoroutine(WaitForRealTime(str.Length*.05f));
+            yield return StartCoroutine(WaitForRealTime(str.Length*.07f));
             str="";
         };
         Time.timeScale = scale;
