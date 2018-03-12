@@ -5,8 +5,11 @@ using UnityEngine;
 public class CircleOrigin : MonoBehaviour {
 
 	public float speed;
+	public Vector3 offset;
 	private float timeCounter;
 	private float dist;
+
+
 	// Use this for initialization
 	void Start () {
 		dist = transform.position.magnitude;
@@ -17,10 +20,11 @@ public class CircleOrigin : MonoBehaviour {
 	void Update () {
 		timeCounter += Time.deltaTime * speed/dist;
 
-		float x = Mathf.Cos(timeCounter)*dist;
+		float x = Mathf.Cos(timeCounter)*dist+offset.x;
 		float y =transform.position.y;
-		float z =Mathf.Sin(timeCounter)*dist;
+		float z =Mathf.Sin(timeCounter)*dist+offset.z;
 
 		transform.position= new Vector3(x,y,z);
+		transform.LookAt(offset);
 	}
 }
