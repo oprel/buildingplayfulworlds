@@ -67,7 +67,7 @@ Material:
     - _Cutoff: 0.5
     - _DepthFactor: 0
     - _DetailNormalMapScale: 1
-    - _DistortStrength: 0.4
+    - _DistortStrength: 0.8
     - _DstBlend: 0
     - _ExtraHeight: -3
     - _GlossMapScale: 1
@@ -82,7 +82,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _WaveAmp: 2
-    - _WaveSpeed: 2000
+    - _WaveSpeed: 100
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.1795132, g: 0, b: 0.44117647, a: 0.49}

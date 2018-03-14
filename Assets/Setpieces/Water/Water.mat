@@ -82,9 +82,9 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _WaveAmp: 0.4
-    - _WaveSpeed: 100
+    - _WaveSpeed: 200
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.6155385, g: 0.6647215, b: 0.8455882, a: 1}
-    - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.6155385, g: 0.6647214, b: 0.8455882, a: 1}
+    - _EdgeColor: {r: 0.6156863, g: 0.6627451, b: 0.8470589, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

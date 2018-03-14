@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4044865220042224}
   - component: {fileID: 33363819169630768}
   - component: {fileID: 23147376932825204}
-  - component: {fileID: 114814288780430496}
   - component: {fileID: 114831097899488700}
+  - component: {fileID: 114814288780430496}
   m_Layer: 0
   m_Name: Cloud Prefab
   m_TagString: Untagged
@@ -108,3 +108,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  offset: {x: 0, y: 0, z: 0}

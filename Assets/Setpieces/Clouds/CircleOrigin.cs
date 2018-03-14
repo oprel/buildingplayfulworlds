@@ -8,13 +8,16 @@ public class CircleOrigin : MonoBehaviour {
 	public Vector3 offset;
 	private float timeCounter;
 	private float dist;
+	private Billboard billboard;
 
 
 	// Use this for initialization
 	void Start () {
 		dist = transform.position.magnitude;
 		timeCounter= 2 * Mathf.PI * dist;
+		billboard = GetComponent<Billboard>();
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,6 +28,7 @@ public class CircleOrigin : MonoBehaviour {
 		float z =Mathf.Sin(timeCounter)*dist+offset.z;
 
 		transform.position= new Vector3(x,y,z);
-		transform.LookAt(offset);
+		if (billboard == null)
+			transform.rotation = Quaternion.LookRotation (offset - transform.position);
 	}
 }
