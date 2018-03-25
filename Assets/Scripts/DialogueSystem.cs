@@ -13,6 +13,7 @@ public class DialogueSystem : MonoBehaviour {
     private Coroutine previousLines;
     private Vector3 hitLocation;
     private Color defaultColor;
+    private bool globalText;
 
 
     void Start(){
@@ -25,7 +26,7 @@ public class DialogueSystem : MonoBehaviour {
 	void Update () {
 		display.text = str;
         display.transform.position= displayLocation;
-        if (Vector3.Distance(hitLocation,transform.position)>5){
+        if (!globalText && Vector3.Distance(hitLocation,transform.position)>5){
             if (currentScript[0] != ""){StopCoroutine( previousLines);};
              currentScript[0]="";
             str="";
@@ -36,6 +37,7 @@ public class DialogueSystem : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         DialogueObject obj = other.GetComponent<DialogueObject>();
          if (obj && obj.DialogueLines[0] != currentScript[0]) {
+            globalText = obj.global;
             if (currentScript[0] != ""){StopCoroutine( previousLines);};
             previousLines = StartCoroutine( ShowText(obj.DialogueLines, obj.textColor) );
             hitLocation = transform.position;

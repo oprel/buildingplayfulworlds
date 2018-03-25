@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class ZeroGravity : MonoBehaviour {
 
-private Rigidbody rb;
-
 void OnTriggerEnter(Collider other){
-	rb = other.GetComponent<Rigidbody>();
-	if (rb)
+	Rigidbody rb = other.GetComponent<Rigidbody>();
+	if (rb != null)
 		rb.useGravity=false;
+		rb.velocity*= -.5f;
+		rb.angularVelocity = Vector3.zero;
 	}
 
 void OnTriggerExit(Collider other){
-	rb = other.GetComponent<Rigidbody>();
-	if (rb)
+	Rigidbody rb = other.GetComponent<Rigidbody>();
+	if (rb != null)
 		rb.useGravity=true;
 	}
 
