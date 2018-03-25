@@ -14,6 +14,8 @@ public class DialogueSystem : MonoBehaviour {
     private Vector3 hitLocation;
     private Color defaultColor;
     private bool globalText;
+   // [HideInInspector]
+    public bool priorityText;
 
 
     void Start(){
@@ -22,21 +24,25 @@ public class DialogueSystem : MonoBehaviour {
         defaultColor = display.color;
     }
 	
+    public void clearText(){
+        if (currentScript[0] != ""){StopCoroutine( previousLines);};
+        currentScript[0]="";
+        str="";
+    }
+
 	// Update is called once per frame
 	void Update () {
 		display.text = str;
         display.transform.position= displayLocation;
-        if (!globalText && Vector3.Distance(hitLocation,transform.position)>5){
-            if (currentScript[0] != ""){StopCoroutine( previousLines);};
-             currentScript[0]="";
-            str="";
-           
-        }
+        if (!globalText && Vector3.Distance(hitLocation,transform.position)>5)
+            clearText();
+        if (priorityText) priorityText = (currentScript[0] !="");
+
 	}
 
     void OnTriggerEnter(Collider other) {
         DialogueObject obj = other.GetComponent<DialogueObject>();
-         if (obj && obj.DialogueLines[0] != currentScript[0]) {
+         if (!priorityText && obj && obj.DialogueLines[0] != currentScript[0]) {
             globalText = obj.global;
             if (currentScript[0] != ""){StopCoroutine( previousLines);};
             previousLines = StartCoroutine( ShowText(obj.DialogueLines, obj.textColor) );
@@ -63,6 +69,7 @@ public class DialogueSystem : MonoBehaviour {
             yield return new WaitForSeconds(str.Length*0.1f);
             str="";
         };
+        priorityText=false;
         currentScript[0]="";
     }
 }
