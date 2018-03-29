@@ -12,6 +12,7 @@ using kode80.PixelRender;
 	private Color normalColor;
 	private Camera camera;
 	private Color targetColor;
+	private float defaultDensity;
 	private float targetDensity;
 	private float transitionSpeed = 20;
 	private Color skyColor;
@@ -27,6 +28,7 @@ using kode80.PixelRender;
 		skyColor=camera.backgroundColor;
 		RenderSettings.fogColor=underwaterColor;
 		defaultClip = camera.farClipPlane;
+		defaultDensity = RenderSettings.fogDensity;
 	}
 	
 	// Update is called once per frame
@@ -44,7 +46,7 @@ using kode80.PixelRender;
 	void SetNormal () {
 	camera.farClipPlane=defaultClip;
 	//img.color=normalColor;
-	targetDensity=0f;
+	targetDensity=defaultDensity;
 	targetColor=normalColor;
 	gameObject.GetComponent<PixelOutlineEffect>().enabled=true;
 	camera.backgroundColor=skyColor;
