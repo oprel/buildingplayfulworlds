@@ -6,7 +6,7 @@ using kode80.PixelRender;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Teleporter : MonoBehaviour {
-	public Object scene;
+	public string scene;
 	public Camera pixelCam;
 
 	private IrisWipeEffect wipe;
@@ -28,7 +28,7 @@ public class Teleporter : MonoBehaviour {
 		int i = 0;
 		while (i < 60){
 		 if (wipe.position<0)
-			SceneManager.LoadScene(scene.name);
+			SceneManager.LoadScene(scene);
 			yield return new WaitForSeconds(1f);
 		}
 

@@ -29,16 +29,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -0, y: 0.51688755, z: -0, w: 0.8560534}
-  m_LocalPosition: {x: 23.13, y: -0.87, z: 41.29}
+  m_LocalRotation: {x: -0, y: 0.89226985, z: -0, w: -0.45150253}
+  m_LocalPosition: {x: -706.9121, y: 95.04, z: 2.745346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4190764422741650}
   - {fileID: 4016838992284220}
   - {fileID: 4882859004119776}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 62.247, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 233.68, z: 0}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -66,8 +65,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 8
-  m_RunSpeed: 16
+  m_WalkSpeed: 10
+  m_RunSpeed: 32
   m_RunstepLenghten: 0.252
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
@@ -154,7 +153,7 @@ MonoBehaviour:
   m_FootstepSounds:
   - {fileID: 0}
   - {fileID: 0}
-  m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
+  m_JumpSound: {fileID: 8300000, guid: c837d866790f920428021b7904802f29, type: 3}
   m_LandSound: {fileID: 0}
   allowMovement: 1
   m_Camera: {fileID: 20284309229483110}
@@ -170,8 +169,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.8
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0
+  m_SlopeLimit: 90
+  m_StepOffset: 0.4
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -218,23 +217,6 @@ GameObject:
   m_Layer: 0
   m_Name: Arms
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1848066280910060
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4190764422741650}
-  - component: {fileID: 20174403419391710}
-  - component: {fileID: 82976842167685002}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,19 +271,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4190764422741650
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848066280910060}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4882859004119776
@@ -317,7 +286,7 @@ Transform:
   - {fileID: 4916460255438898}
   - {fileID: 4975425629621538}
   m_Father: {fileID: 400000}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4916460255438898
 Transform:
@@ -345,42 +314,6 @@ Transform:
   m_Father: {fileID: 4882859004119776}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 84.350006, y: -0.001, z: -0.001}
---- !u!20 &20174403419391710
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848066280910060}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 32
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!20 &20284309229483110
 Camera:
   m_ObjectHideFlags: 1
@@ -390,7 +323,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.626622, g: 0.74039197, b: 0.89705884, a: 1}
+  m_BackGroundColor: {r: 0.15218495, g: 0.073691614, b: 0.21323532, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -398,7 +331,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -509,8 +442,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1, z: 0.9}
-  m_Center: {x: 0, y: 0.19, z: 1.7}
+  m_Size: {x: 1, y: 0.7, z: 0.9}
+  m_Center: {x: 0, y: -0.13, z: 1.7}
 --- !u!81 &81480199039393746
 AudioListener:
   m_ObjectHideFlags: 1
@@ -529,7 +462,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -585,87 +518,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82976842167685002
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848066280910060}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f105bc39fa78fc549ab3d6d0d78f04ec, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -699,14 +552,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1866548788675904}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0ba538972a94824babc9f3b5574bdb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterHeight: -0.2
+  waterHeight: -135
   img: {fileID: 0}
-  underwaterColor: {r: 0.22404845, g: 0.2861514, b: 0.5441177, a: 0.409}
+  underwaterColor: {r: 0.15294118, g: 0.07450981, b: 0.21176472, a: 0.409}
 --- !u!114 &114345218711030232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -720,7 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {x: 0.5, y: 0.5}
   position: 0.64
-  animationSpeed: 0.1
+  animationSpeed: 0.6
   target: 1
 --- !u!114 &114544859837857346
 MonoBehaviour:
@@ -749,6 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 0}
+  priorityText: 0
 --- !u!114 &114826193338724368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -761,7 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 0.066176474, g: 0.018595695, b: 0.013624569, a: 1}
-  depthThreshold: 0.0008
+  depthThreshold: 0.005
 --- !u!114 &114840768451210892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -782,7 +636,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26f8d84104dfe1345823e353156bb3ac, type: 3}
   m_Name: 

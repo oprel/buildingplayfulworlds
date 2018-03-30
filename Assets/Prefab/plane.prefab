@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114057232752063292}
   - component: {fileID: 198314448727209102}
   - component: {fileID: 199919961633171012}
+  - component: {fileID: 114291219005759104}
   m_Layer: 0
   m_Name: plane
   m_TagString: Untagged
@@ -124,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595113622034962}
   m_LocalRotation: {x: -0, y: 0.7071071, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: -670.3, y: -120.5, z: -0.6}
+  m_LocalPosition: {x: -677.9, y: -114.6, z: -0.6}
   m_LocalScale: {x: 0.33997595, y: 0.33997604, z: 0.33997604}
   m_Children:
   - {fileID: 4690239682604682}
@@ -381,6 +382,22 @@ MonoBehaviour:
   propellor: {fileID: 1497796421196640}
   player: {fileID: 0}
   localCamera: {fileID: 1348473809693832}
+--- !u!114 &114291219005759104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1595113622034962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481672f53e0934c4f8416007e8376b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  global: 0
+  DialogueLines:
+  - 'flip: enter plane'
+  textColor:
+  - {r: 0.9725491, g: 0.25882354, b: 0.003921569, a: 1}
 --- !u!114 &114390438688865816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,7 +520,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -626660624
+  randomSeed: 1211158733
   InitialModule:
     serializedVersion: 3
     enabled: 1

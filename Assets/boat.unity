@@ -345,7 +345,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 792931617}
   m_Father: {fileID: 1324652559}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -693,7 +694,7 @@ RectTransform:
   - {fileID: 1310805837}
   - {fileID: 961994877}
   m_Father: {fileID: 1324652559}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1239,12 +1240,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1324652559}
-  m_RootOrder: 2
+  m_Father: {fileID: 351009006}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 15}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792931618
@@ -2077,7 +2078,7 @@ RectTransform:
   m_Children:
   - {fileID: 1501959046}
   m_Father: {fileID: 1324652559}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2097,9 +2098,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   display: {fileID: 1501959047}
   script:
-  - Check out this dope.
-  - He does nothing but tell lies.
-  - Let's get rid of him.
+  - Hey, Max.
+  - '- Yeah, what''s up.'
+  - I'm really bored.
+  - '- Yeah, same here.'
+  - Let's throw our sleeping guest overboard.
+  - '- Okay.'
 --- !u!114 &1296700143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,7 +2395,6 @@ RectTransform:
   m_Children:
   - {fileID: 351009006}
   - {fileID: 1809599660}
-  - {fileID: 792931617}
   - {fileID: 555248768}
   - {fileID: 1296700141}
   m_Father: {fileID: 0}
@@ -2523,7 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ddc30a47264ba429c8ec052c162489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 2eed3a8bd93777440ab018148d5561ff, type: 3}
+  scene: 
   pixelCam: {fileID: 0}
 --- !u!23 &1527921165
 MeshRenderer:
@@ -2841,7 +2844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1809599660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3000,7 +3003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ddc30a47264ba429c8ec052c162489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 2eed3a8bd93777440ab018148d5561ff, type: 3}
+  scene: island
   pixelCam: {fileID: 1063791809}
 --- !u!23 &1920304751
 MeshRenderer:
