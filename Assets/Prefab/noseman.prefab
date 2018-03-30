@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 95638003453637952}
   - component: {fileID: 54883784176504992}
   - component: {fileID: 136254094866129322}
+  - component: {fileID: 114448292049307368}
   m_Layer: 0
   m_Name: noseman
   m_TagString: Untagged
@@ -531,8 +532,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640958168430358}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7221603, y: 8.268226, z: -8.478446}
+  m_LocalRotation: {x: -0, y: 0.6895824, z: -0, w: 0.72420734}
+  m_LocalPosition: {x: -731.68365, y: -79.66402, z: 116.09678}
   m_LocalScale: {x: 0.548769, y: 0.548769, z: 0.548769}
   m_Children:
   - {fileID: 4225900291600898}
@@ -542,7 +543,7 @@ Transform:
   - {fileID: 4196871746700628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 87.19401, z: 0}
 --- !u!4 &4256828455308916
 Transform:
   m_ObjectHideFlags: 1
@@ -742,6 +743,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114448292049307368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640958168430358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481672f53e0934c4f8416007e8376b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  global: 0
+  DialogueLines:
+  - 
+  textColor: []
 --- !u!136 &136254094866129322
 CapsuleCollider:
   m_ObjectHideFlags: 1

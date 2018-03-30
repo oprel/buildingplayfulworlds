@@ -38,7 +38,15 @@ public class PlayerShove : MonoBehaviour {
 		Rigidbody rb = other.GetComponent<Rigidbody>();
 		if (rb){
 			rb.AddForceAtPosition(impactVector, transform.position);
-			//Debug.Log("added force");
+
+			
+
+		}
+
+		//plane enter
+		if (other.transform.parent && other.transform.parent.transform.parent){
+			planeController plane = other.transform.parent.transform.parent.GetComponent<planeController>();
+			if (plane) plane.Init();
 		}
 	}
 

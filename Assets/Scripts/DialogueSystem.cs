@@ -34,7 +34,7 @@ public class DialogueSystem : MonoBehaviour {
 	void Update () {
 		display.text = str;
         display.transform.position= displayLocation;
-        if (!globalText && Vector3.Distance(hitLocation,transform.position)>5)
+        if (!globalText && Vector3.Distance(hitLocation,transform.position)>10)
             clearText();
         if (priorityText) priorityText = (currentScript[0] !="");
 
