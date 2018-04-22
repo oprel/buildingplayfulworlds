@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="32" height="13" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="SuperFlagRunTerrain.tsx"/>
+ <tileset firstgid="41" source="SuperFlagRunDeco.tsx"/>
+ <layer name="Terrain" width="32" height="13" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BoAhYGhgY2IC0yQHZzAWk+IJYCsunhBpCdjEAahEF2c0Ltl4S6QRBIgzApbmEkAcPsRMYw+5ExslsIYXTzSMXY7CcFj9o/sPYDAOgKDbw=
+  </data>
+ </layer>
+ <layer name="Deco" width="32" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztzkkOQEAUhGGncQIcACszKzMrM/df+iV9ANGRTkQlX3pVr1rTvhNDvJbCfVPsq/iDDQeugu0rCVJkknc8+AgQIkJ8o9eiQy+5n6NAiQo1mhu9DTsO4WkGjJgwY8Eqce/Pn7eiS/ZPHosMUQ==
+  </data>
+ </layer>
+</map>

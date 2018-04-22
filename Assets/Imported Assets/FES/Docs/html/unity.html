@@ -1,0 +1,249 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Unity Crash Course &#8212; FES v1.5.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/fes.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/fes_favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="figure align-center" id="id1">
+<img alt="_images/logo_large.png" src="_images/logo_large.png" />
+<p class="caption"><span class="caption-text">v1.5.0</span></p>
+</div>
+<p class="customdoclinks"><a class="reference internal" href="index.html"><span class="doc">Intro</span></a> | <a class="reference internal" href="features.html"><span class="doc">Features</span></a> | <a class="reference internal" href="#"><span class="doc">Unity Crash Course</span></a> | <a class="reference internal" href="apiref.html"><span class="doc">API Reference</span></a> | <a class="reference internal" href="history.html"><span class="doc">Version History</span></a></p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unity Crash Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#get-unity">Get Unity!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#create-a-fes-project">Create a FES Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#writing-code">Writing Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#compiling-code">Compiling Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#adding-resources">Adding Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#deploying-your-game">Deploying Your Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#demo-cleanup">Demo Cleanup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#other-tips">Other Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#getting-more-help">Getting More Help</a></li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="unity-crash-course">
+<h1>Unity Crash Course</h1>
+<p>FES offers a code-only development approach that is very unlike normal Unity development, however a very basic knowledge of Unity is still required to setup a FES project. This guide will help you get going in minutes!</p>
+<p>If you’ve ever done anything in Unity before you will likely not need this guide at all.</p>
+</div>
+<div class="section" id="get-unity">
+<h1>Get Unity!</h1>
+<p>Download and install Unity from the Unity website. The minimum required version for FES is 2017.1.1, which is the version we’ll be using for
+the rest of this tutorial.</p>
+<p>Unity is free of charge (as in beer, no credit cards, no royalities) so long as your annual income from your Unity projects (or related fundraising) is under a certain amount, a large amount at that. See the Unity website for up to date details.</p>
+<p>When installing Unity you will be presented with a list of platforms you want to support, as well as other optional tools. You can change your installation at any time so don’t worry about making the wrong choice here. If you’re developing on a Windows machine I highly recommend you select Microsoft Visual Studio Community (free) as your C# code editor. You can use any editor you like, but with Visual Studio you will get create code completion and Debugging facilities, other Desktop platforms have similar solutions.</p>
+<div class="figure align-center">
+<img alt="_images/unity_install.png" src="_images/unity_install.png" />
+</div>
+</div>
+<div class="section" id="create-a-fes-project">
+<h1>Create a FES Project</h1>
+<p>While setting up your first project you will require internet connectivity. Afterwards you only require internet connectivity if you want to update Unity and/or FES.</p>
+<p>Launch Unity from your Desktop. The first time you launch Unity you will be asked to login with your account. If you do not have a Unity account yet you can create one now, or use a sign-in partner like Google or Facebook.</p>
+<div class="figure align-center">
+<img alt="_images/unity_login.png" src="_images/unity_login.png" />
+</div>
+<p>Once logged in you will see a list of tutorials or project templates. We’re not interested in any of these as they do not relate to how development is done for FES. Simply click <em>New</em> on top to start a new project.</p>
+<div class="figure align-center">
+<img alt="_images/unity_wizard.png" src="_images/unity_wizard.png" />
+</div>
+<p>Now select a 2D project, turn off <em>Analytics</em> (you can turn them on later if you want, but they’re out of scope of this guide), enter your project name and path, then click <em>Create Project</em>.
+Give Unity a few moments to create your new project.</p>
+<div class="figure align-center">
+<img alt="_images/unity_newproject.png" src="_images/unity_newproject.png" />
+</div>
+<p>The next screen will be your main Unity IDE screen. It may look overwhelming at first sight, but don’t worry, for FES we only need to learn a tiny subset of this IDE.</p>
+<div class="figure align-center">
+<img alt="_images/unity_mainscreen.png" src="_images/unity_mainscreen.png" />
+</div>
+<p>First lets add FES to this project. Click on Window-&gt;Asset Store to open up the Asset Store.</p>
+<div class="figure align-center">
+<img alt="_images/unity_openstore.png" src="_images/unity_openstore.png" />
+</div>
+<p>Now search for “FES Retro Game Framework”.</p>
+<div class="figure align-center">
+<img alt="_images/unity_assetstore_search.png" src="_images/unity_assetstore_search.png" />
+</div>
+<p>FES should appear on the top of the search results, you may have to scroll down a bit past the search refining options to see it.</p>
+<div class="figure align-center">
+<img alt="_images/unity_assetstore_searchresult.png" src="_images/unity_assetstore_searchresult.png" />
+</div>
+<p>Click on FES Retro Game Framework and you should arrive on the asset page. Scroll down a bit and you will see either an <em>Import</em> button if you
+already own FES, and <em>Update</em> button if a new version of FES is available, or an <em>Add to Cart</em> button if you have not purchased FES yet. Once ready click the Import button to proceed.</p>
+<div class="figure align-center">
+<img alt="_images/unity_assetstore_import1.png" src="_images/unity_assetstore_import1.png" />
+</div>
+<p>A dialog should show up now warning you that FES is a <em>Complete Project</em> and will overwrite your existing project settings, we very much want this, click Import.</p>
+<div class="figure align-center">
+<img alt="_images/unity_assetstore_import2.png" src="_images/unity_assetstore_import2.png" />
+</div>
+<p>Finally Unity will show you what files it’s about to import, leave them all selected and click Import.</p>
+<div class="figure align-center">
+<img alt="_images/unity_import_final.png" src="_images/unity_import_final.png" />
+</div>
+<p>Great, you now have yourself a FES project! You can now close the Asset Store window by right clicking the Asset Store tab on top. From now on you will not require internet connectivity to develop your game.</p>
+<p>A Unity project stores all its files in an <code class="docutils literal"><span class="pre">Assets</span></code> folder which you can see in the lower left corner of the IDE window. Unity projects are typically split into multiple Scenes, but for FES we only need one scene per project. To get started expand your <code class="docutils literal"><span class="pre">Assets</span></code> folder, and click on the Scenes folder. FES comes with a bunch of examples including a barebones Scene called MyGame, double click MyGame now.</p>
+<div class="figure align-center">
+<img alt="_images/unity_selectscene.png" src="_images/unity_selectscene.png" />
+</div>
+<p>Now click the <em>Play</em> button on top of the screen and… that’s it! Your barebones FES game is running! If you don’t see the game make sure the <em>Game</em> tab is selected on the row just below the <em>Play</em> button.</p>
+<div class="figure align-center">
+<img alt="_images/unity_play.png" src="_images/unity_play.png" />
+</div>
+<p>From this point on you will mostly use the Unity IDE to click the Play button on and off, and view runtime logs!</p>
+</div>
+<div class="section" id="writing-code">
+<h1>Writing Code</h1>
+<p>To start writing code you can use Unity IDE to open the project in Visual Studio by clicking Assets -&gt; Open C# Project, this option will also create the Visual Studio project if one doesn’t
+exist yet. You can also just double click a source file under the Assets folder (bottom left of the Unity IDE). Finally you can just directly open a source file from your project folder with
+any editor you like.</p>
+<div class="figure align-center">
+<img alt="_images/unity_opencode.png" src="_images/unity_opencode.png" />
+</div>
+<p>In this guide we’re using Visual Studio. Using the Visual Studio Solution Explorer expand the Assets/FES/Scripts/MyGame folder, and open the MyGame.cs file. The entire demo you saw earlier is contained in this file, have a look. For an explaintion of what is happening here please see <a class="reference internal" href="features.html#game-loop"><span class="std std-ref">The Game Loop</span></a>.</p>
+<div class="figure align-center">
+<img alt="_images/unity_code.png" src="_images/unity_code.png" />
+</div>
+<p>Of course a project of any complexity would require more source files, you can add source files anywhere inside the Assets folder, so go ahead and organize your code how you like it.</p>
+</div>
+<div class="section" id="compiling-code">
+<h1>Compiling Code</h1>
+<p>Compiling code is trivial! You don’t actually have to do anything, when you next click on the Unity IDE window it will scan your project for changed files and compile changed or new source files for you! If there is a compilation error it will be shown on the bottom of the Unity IDE window. Clicking the error will show the console, which may contain more details and other errors.</p>
+<div class="figure align-center">
+<img alt="_images/unity_compile_error.png" src="_images/unity_compile_error.png" />
+</div>
+<p>The console is important because it will also show you warnings and logs. You can log to the console yourself:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Hi there!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<img alt="_images/unity_logging.png" src="_images/unity_logging.png" />
+</div>
+<p>It gets even better! Double-clicking any log line or compilation error will take you directly to that line of code in your code editor, granted that your code editor supports this level of
+integration.</p>
+</div>
+<div class="section" id="adding-resources">
+<h1>Adding Resources</h1>
+<p>Adding resources is also very trivial. Simply put your images, sounds, music, and even tmx tilemaps into any folder in your project that descends from a folder named <code class="docutils literal"><span class="pre">Resources</span></code>. The <code class="docutils literal"><span class="pre">Resources</span></code> folder must itself be somewhere under the <code class="docutils literal"><span class="pre">Assets</span></code> folder.</p>
+<p>MyGame example has its sprite sheet located at <code class="docutils literal"><span class="pre">Assets/FES/Resources/Demos/MyGame/MySprites.png</span></code>.</p>
+<p>As with source file compilation any resource changes are automatically picked up by Unity next time the Unity IDE window is in focus. It’s worth noting that in a typical Unity application the user will want to edit specific resource import settings, but FES takes care of all of that for you, so you do not have to do anything else!</p>
+</div>
+<div class="section" id="debugging">
+<h1>Debugging</h1>
+<p>Unity supports live debugging, which works great with Visual Studio, and some other editors. Simply set your breakpoints in your code editor, and attach to the Unity process. You may also
+attach to the Unity process before you press the <em>Play</em> button, which is great for setting breakpoints in your initialization code.</p>
+<p>For Visual Studio specifically you may have to install <em>Visual Studio Tools for Unity</em> to debug Unity, but if you’ve installed Visual Studio via the Unity installer than you probably already have this plugin installed.</p>
+</div>
+<div class="section" id="deploying-your-game">
+<h1>Deploying Your Game</h1>
+<p>This is where Unity really shines. Deploying your project to a wide variety of platforms is very simple! First go to File -&gt; Build Settings.</p>
+<div class="figure align-center">
+<img alt="_images/unity_build1.png" src="_images/unity_build1.png" />
+</div>
+<p>Select your target platform. If you don’t see your platform here you may have not installed support for it, just re-run the installer and select the platform from there.</p>
+<p>Now you can just click <em>Build</em> and build your game with default settings, or you can customize the build by clicking <em>Player Settings…</em></p>
+<div class="figure align-center">
+<img alt="_images/unity_build2.png" src="_images/unity_build2.png" />
+</div>
+<p>From the <em>Player Settings</em> you can configure a myriad of options, such as game title, icons, splash screens, supported resolutions, portrait/landscape orientation (mobile), developer information, and more. For a final product you will likely want to fiddle with these settings, but meanwhile the default settings will do just fine!</p>
+<div class="figure align-center">
+<img alt="_images/unity_build3.png" src="_images/unity_build3.png" />
+</div>
+</div>
+<div class="section" id="demo-cleanup">
+<h1>Demo Cleanup</h1>
+<p>FES comes with a number of examples and optional material that you may want to remove to reduce the size of your project. You may delete any of these folders:</p>
+<p><code class="docutils literal"><span class="pre">FES/Docs</span></code></p>
+<p><code class="docutils literal"><span class="pre">FES/Resources</span></code></p>
+<p><code class="docutils literal"><span class="pre">FES/Scenes</span></code></p>
+<p><code class="docutils literal"><span class="pre">FES/Scripts/Demos</span></code></p>
+<p><code class="docutils literal"><span class="pre">FES/Scripts/MyGame</span></code></p>
+<p>Of course if you continue building on top of the MyGame example then make sure you move its files to somewhere else before you delete <code class="docutils literal"><span class="pre">FES/Scripts/MyGame</span></code>, <code class="docutils literal"><span class="pre">FES/Scenes</span></code>, and <code class="docutils literal"><span class="pre">FES/Resources/MyGame</span></code>!</p>
+</div>
+<div class="section" id="other-tips">
+<h1>Other Tips</h1>
+<p>Because FES doesn’t use most of Unity IDE you may want to select the option Maximize On Play so that your game window fills more of your screen. Also notice that there is a Scale slider that
+can resize the game window. If this slider is not at 1x then what you’re seeing will be scaled up/down and may look distorted.</p>
+<div class="figure align-center">
+<img alt="_images/unity_max.png" src="_images/unity_max.png" />
+</div>
+<p>You may want to test your game on different resolutions to see how it would look. You can select an existing resolution from the drop down, or enter your own custom resolution.</p>
+<div class="figure align-center">
+<img alt="_images/unity_res.png" src="_images/unity_res.png" />
+</div>
+<p>You can enable a <em>Stats</em> overlay that will show you some performance metrics for your game, including frames per second.</p>
+<div class="figure align-center">
+<img alt="_images/unity_stats.png" src="_images/unity_stats.png" />
+</div>
+<p>From Window -&gt; Profiler you can open the Profiler which can give you quite a bit of insight into where your game may have performance issues. I suggest reading more on the Profiler online
+to learn how to best get useful information out of it.</p>
+<div class="figure align-center">
+<img alt="_images/unity_profiler.png" src="_images/unity_profiler.png" />
+</div>
+</div>
+<div class="section" id="getting-more-help">
+<h1>Getting More Help</h1>
+<p>Unity has another great advantage, it is extremely popular! If you run into any issues with it just search online and you’re bound to find an answer quickly!</p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Martin Cietwierkowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

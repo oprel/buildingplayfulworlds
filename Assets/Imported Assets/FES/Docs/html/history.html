@@ -1,0 +1,239 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>v1.5.0 - April 9, 2018 &#8212; FES v1.5.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/fes.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/fes_favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="figure align-center" id="id16">
+<img alt="_images/logo_large.png" src="_images/logo_large.png" />
+<p class="caption"><span class="caption-text">v1.5.0</span></p>
+</div>
+<p class="customdoclinks"><a class="reference internal" href="index.html"><span class="doc">Intro</span></a> | <a class="reference internal" href="features.html"><span class="doc">Features</span></a> | <a class="reference internal" href="unity.html"><span class="doc">Unity Crash Course</span></a> | <a class="reference internal" href="apiref.html"><span class="doc">API Reference</span></a> | <a class="reference internal" href="#"><span class="doc">Version History</span></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="v1-5-0-april-9-2018">
+<h1>v1.5.0 - April 9, 2018</h1>
+<div class="section" id="new">
+<h2>New:</h2>
+<ul class="simple">
+<li>Added BrickBust complete brick-breaker demo game!</li>
+<li>Added <code class="docutils literal"><span class="pre">FES.Ticks</span></code> and <code class="docutils literal"><span class="pre">FES.TicksReset</span></code> APIs</li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Fix game <code class="docutils literal"><span class="pre">FES.Effect.Slide</span></code> not clipping to <code class="docutils literal"><span class="pre">FES.Display</span></code> bounds corrects.</li>
+<li>Fix <code class="docutils literal"><span class="pre">FES.PaletteSwapGet</span></code> not return the same value as set by <code class="docutils literal"><span class="pre">FES.PaletteSwapSet</span></code>!</li>
+<li>Fix Tilemap rendering issues when <code class="docutils literal"><span class="pre">FES.HardwareSettings.MapSize</span></code> is not a multiple of the internal chunk size (16)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-4-3-march-16-2018">
+<h1>v1.4.3 - March 16, 2018</h1>
+<div class="section" id="id1">
+<h2>New:</h2>
+<ul class="simple">
+<li>Improve overall performance by significantly reducing the amount of degenerate triangles used under the hood</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Fix colors of primitives (rectangles/pixels/ellipses/lines) being incorrect in indexed mode if there are no sprites nor fonts being drawn in the same frame</li>
+<li>Fix a clipping bug when drawing rectangles, filled ellipses, and orthogonal lines</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-4-2-march-5-2018">
+<h1>v1.4.2 - March 5, 2018</h1>
+<div class="section" id="id3">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Fix regression in alpha blending where colors get darker as alpha approaches 0, this bug was introduced in v1.4.0.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-4-1-february-22-2018">
+<h1>v1.4.1 - February 22, 2018</h1>
+<div class="section" id="id4">
+<h2>New:</h2>
+<ul class="simple">
+<li>Added <code class="docutils literal"><span class="pre">FES.BatchDebugEnable</span></code> and <code class="docutils literal"><span class="pre">FES.BatchDebugDisable</span></code> which shows how many batch/flush operations are being performed and why.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Fix tilemap chunks not being clipped at an early stage in the pipeline if they are completely out of clip bounds. This should improve tilemap rendering performance in some scenarios.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-4-february-5-2018">
+<h1>v1.4 - February 5, 2018</h1>
+<div class="section" id="id6">
+<h2>New:</h2>
+<ul class="simple">
+<li>Added custom shader support! Shaders can now be applied in pixel-perfect space when drawing sprites/primitives/fonts, and also at post-process effect time. See <code class="docutils literal"><span class="pre">FES.ShaderSetup()</span></code>, <code class="docutils literal"><span class="pre">FES.ShaderSet()</span></code>, <code class="docutils literal"><span class="pre">FES.EffectShader()</span></code></li>
+<li>Added <code class="docutils literal"><span class="pre">FES.EffectApplyNow()</span></code> API which specifies when post-processing effects should be applied. This is very useful if you want some drawing (eg GUI) to be affected by different post-processing effects (or none at all)</li>
+<li>Added <code class="docutils literal"><span class="pre">FES.PaletteColorSet()</span></code> overload that allows for setting colors directly from another palette file, rather than manually one at a time</li>
+<li>Added <code class="docutils literal"><span class="pre">FES.SpriteIndex()</span></code> overload that takes sprite sheet index as a parameter, previously <code class="docutils literal"><span class="pre">FES.SpriteIndex()</span></code> only worked for current sprite sheet</li>
+<li>Added Unity Crash Course to the Documentation to help new Unity developers get started with FES</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Fix incorrect clipping region on Offscreen surface of different size than <code class="docutils literal"><span class="pre">FES.DisplaySize</span></code></li>
+<li>Fix Tilemap cell not updating when only the Tint Color or Flags are changed</li>
+<li>Fix some Tilemap chunks becoming invalid and unsuable if all tiles set manually set to empty/invalid with <code class="docutils literal"><span class="pre">FES.MapSpriteSet()</span></code></li>
+<li>Fix some Tilemap chunks not rendering on Offscreen surface of different size than <code class="docutils literal"><span class="pre">FES.DisplaySize</span></code></li>
+<li>Fix Tilemap rendering when using the Offset parameter, some chunks were not rendered</li>
+<li>Fix Tilemaps leaking Meshes</li>
+<li>Fix built-in font not rendering properly if there is no sprite sheets loaded</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-3-january-4-2018">
+<h1>v1.3 - January 4, 2018</h1>
+<div class="section" id="id8">
+<h2>New:</h2>
+<ul class="simple">
+<li>Add support for multiple offscreens with custom sizes. New APIs <code class="docutils literal"><span class="pre">OffscreenSetup(index,</span> <span class="pre">size)</span></code>, <code class="docutils literal"><span class="pre">Offscreen(index)</span></code>, <code class="docutils literal"><span class="pre">OffscreenDelete(index)</span></code>. There is no longer a default offscreen created, an equivalent one can be created with <code class="docutils literal"><span class="pre">OffscreenSetup(0,</span> <span class="pre">FES.DisplaySize)</span></code></li>
+<li>Optimized <code class="docutils literal"><span class="pre">DrawCopyOffscreen</span></code></li>
+<li>Added more error logs for Tilemap and Font operations which were previously failing silently</li>
+<li>Added <code class="docutils literal"><span class="pre">SoundDelete</span></code>, <code class="docutils literal"><span class="pre">MusicDelete</span></code> and <code class="docutils literal"><span class="pre">SpriteSheetDelete</span></code> APIs for explicitly releasing resources</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">DrawCopyOffscreen</span></code> was flushing too much, causing too many draw calls</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-2-1-december-21-2017">
+<h1>v1.2.1 - December 21, 2017</h1>
+<div class="section" id="id10">
+<h2>New:</h2>
+<ul class="simple">
+<li>Add Stress Test app</li>
+<li>Add <code class="docutils literal"><span class="pre">FES.SpriteSheetGet()</span></code> for retrieving current sprite sheet index</li>
+<li><code class="docutils literal"><span class="pre">ColorMode.RGB</span></code> is now the default <code class="docutils literal"><span class="pre">ColorMode</span></code> if one is not specified</li>
+<li>Added <code class="docutils literal"><span class="pre">NineSlice</span></code> struct to define the pieces of a nine-slice image more conveniently</li>
+<li>Added <code class="docutils literal"><span class="pre">FES.ClipDebugEnable</span></code> and <code class="docutils literal"><span class="pre">FES.ClipDebugDisable</span></code> to visualize clip regions and assist in debugging clipping related issues</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Fix music not restarting when <code class="docutils literal"><span class="pre">FES.MusicStop()</span></code> &amp; <code class="docutils literal"><span class="pre">FES.MusicPlay()</span></code> is called</li>
+<li>Fix crash when sound is played inside of <code class="docutils literal"><span class="pre">IFESGame.Initialize()</span></code></li>
+<li>Fix occasional crash with <code class="docutils literal"><span class="pre">FES.MapClear()</span></code> when clearing all layers</li>
+<li>Don’t set targetFrameRate in WebGL builds to prevent emscripten warning</li>
+<li>Fix clipping region on some older hardware</li>
+<li>Fix inverted ellipse rendering on some older hardware</li>
+<li>Fix nine-slice rendering</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-2-december-7-2017">
+<h1>v1.2 - December 7, 2017</h1>
+<div class="section" id="id12">
+<h2>New:</h2>
+<ul class="simple">
+<li>Added <code class="docutils literal"><span class="pre">FES.DisplayModeSet()</span></code> API for changing the pixel resolution of FES at any time</li>
+<li>Added support for wide pixel (2x1) and tall pixel (1x2) modes which can be set in <code class="docutils literal"><span class="pre">QueryHardware</span></code> or in <code class="docutils literal"><span class="pre">FES.DisplayModeSet()</span></code></li>
+<li>Allow Update FPS to be configured in <code class="docutils literal"><span class="pre">QueryHardware</span></code>, defaults to 60fps</li>
+<li>Added API <code class="docutils literal"><span class="pre">FES.FPS()</span></code> and <code class="docutils literal"><span class="pre">FES.UpdateInterval()</span></code> to query update FPS, and time between update frames in milliseconds</li>
+<li><code class="docutils literal"><span class="pre">FES.SpriteSize()</span></code> and <code class="docutils literal"><span class="pre">FES.SpriteSheetSize()</span></code> now take optional sprite sheet index parameter to specify which sprite sheet should be queried</li>
+<li>Replaced <code class="docutils literal"><span class="pre">ColorRGB</span></code> with <code class="docutils literal"><span class="pre">ColorRGBA</span></code>. The alpha component is compounded with the global alpha set by <code class="docutils literal"><span class="pre">AlphaSet()</span></code></li>
+<li>New <code class="docutils literal"><span class="pre">Rect2i</span></code> apis <code class="docutils literal"><span class="pre">Center()</span></code> and <code class="docutils literal"><span class="pre">Intersect()</span></code></li>
+<li>Added some predefined basic colors to <code class="docutils literal"><span class="pre">ColorRGBA</span></code></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Palette pixels in multi-row palette files should now be read in top-left to bottom-right order, instead of bottom-left to top-right</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-1-november-20-2017">
+<h1>v1.1 - November 20, 2017</h1>
+<div class="section" id="id14">
+<h2>New:</h2>
+<ul class="simple">
+<li>Add support for multiple spritesheets. See <code class="docutils literal"><span class="pre">SpriteSheetSetup()</span></code>, <code class="docutils literal"><span class="pre">SpriteSheetSet()</span></code>, and <code class="docutils literal"><span class="pre">MapLayerSpriteSheetSet()</span></code></li>
+<li>Add new <code class="docutils literal"><span class="pre">Print()</span></code> APIs that allow for specifying the text area, and text alignment within it, as well as text overflow handling strategy (overflow, clip, or word wrap).</li>
+<li>Greatly improved performance when rendering primitives, in particular lines, and ellipses.</li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h2>Bug Fixes:</h2>
+<ul class="simple">
+<li>Fix “false” return value when loading a TMX map from a CSV formatted file</li>
+<li>Fix exception when using <code class="docutils literal"><span class="pre">MapDataGet()</span></code> on a null data element</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-0-october-19-2017">
+<h1>v1.0 - October 19, 2017</h1>
+<p>Initial release.</p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Martin Cietwierkowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

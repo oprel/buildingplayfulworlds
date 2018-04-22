@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Overview &#8212; FES v1.5.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/fes.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/fes_favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="figure align-center" id="id3">
+<img alt="_images/logo_large.png" src="_images/logo_large.png" />
+<p class="caption"><span class="caption-text">v1.5.0</span></p>
+</div>
+<p class="customdoclinks"><a class="reference internal" href="index.html"><span class="doc">Intro</span></a> | <a class="reference internal" href="#"><span class="doc">Features</span></a> | <a class="reference internal" href="unity.html"><span class="doc">Unity Crash Course</span></a> | <a class="reference internal" href="apiref.html"><span class="doc">API Reference</span></a> | <a class="reference internal" href="history.html"><span class="doc">Version History</span></a></p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#a-game-from-scratch">A Game From Scratch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#the-game-loop">The Game Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fixed-frame-rate">Fixed Frame Rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#graphics">Graphics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#new-rendering-pipeline">New Rendering Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pixel-perfect-rendering">Pixel Perfect Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pixel-style">Pixel Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#color-mode">Color Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rgb-color-mode">RGB Color Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indexed-color-mode">Indexed Color Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#palette-swapping">Palette Swapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sprites">Sprites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sprite-sheets">Sprite Sheets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drawing">Drawing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nine-slice-sprite">Nine-Slice Sprite</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#primitives">Primitives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonts">Fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#built-in-fes-font">Built-in FES Font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-font">Custom Font</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-font-in-indexed-mode">Custom Font in Indexed Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-string-coloring">Inline String Coloring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-alignment">Text Alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-clipping">Text Clipping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tilemaps">Tilemaps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Drawing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-layer-sprite-sheet">Changing Layer Sprite Sheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-getting-tile-info">Setting/Getting Tile Info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tmx-loading">TMX loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alpha-transparency">Alpha Transparency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clip-region">Clip Region</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clip-region-debugging">Clip Region Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#offscreen-drawing">Offscreen Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#camera">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#post-processing-effects">Post-Processing Effects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post-processing-early">Post-Processing Early</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#shaders-advanced-topic">Shaders (Advanced Topic)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loading-a-shader">Loading a Shader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-a-shader">Enabling a Shader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-shader-variables">Setting Shader Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offscreen-surfaces-in-shaders">Offscreen Surfaces in Shaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-a-fes-shader">Writing a FES Shader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-processing-shaders">Post-Processing Shaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shader-limitations">Shader Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-flush-debugging">Batch/Flush Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#audio">Audio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sound">Sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#music">Music</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#input">Input</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gamepads">Gamepads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gamepad-input-override">Gamepad Input Override</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keyboard">Keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pointer">Pointer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#closing-words">Closing Words</a></li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="overview">
+<h1>Overview</h1>
+<p>This document discusses many of the features that FES offers. Text is good, reading is good, but be sure
+to also check out the <code class="docutils literal"><span class="pre">DemoReel</span></code> example in the scene <code class="docutils literal"><span class="pre">Assets/FES/Scenes/DemoReel</span></code> for some visual bliss and instant gratification.</p>
+</div>
+<div class="section" id="a-game-from-scratch">
+<h1>A Game From Scratch</h1>
+<p>FES comes with a bare-bones game that you can use as a starting template. Please see <code class="file docutils literal"><span class="pre">Assets/FES/Scenes/MyGame</span></code> Scene and the
+<code class="file docutils literal"><span class="pre">Asssets/FES/Scripts/MyGame/MyGame.cs</span></code> source file.</p>
+<p>If you’d like to construct the starting point yourself, or are simply curious then follow these simple steps:</p>
+<ul class="simple">
+<li>Create a new empty Scene</li>
+<li>Delete any GameObjects placed in the Scene by Unity. Most likely this will be just the <code class="docutils literal"><span class="pre">Main</span> <span class="pre">Camera</span></code> object.</li>
+<li>Drag the FES prefab object from <code class="file docutils literal"><span class="pre">Assets/FES/Prefabs/FES</span></code> into the Scene</li>
+<li>Create a new C# script that implements the <code class="docutils literal"><span class="pre">FES.IFESGame</span></code> interface, see <a class="reference internal" href="#game-loop"><span class="std std-ref">The Game Loop</span></a> for an example.</li>
+<li>Create a new C# script that will act as an entry point into your game, it should simply be:</li>
+</ul>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">MyGameEntry</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">FES</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="k">new</span> <span class="n">MyGame</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Create a new GameObject in the Scene, and add the <code class="docutils literal"><span class="pre">MyGameEntry</span></code> script into it.</li>
+<li>… and you’re done! Press Play in the Unity Editor to run your game, of course it won’t do anything, but that’s what the rest of the manual is for!</li>
+</ul>
+</div>
+<div class="section" id="the-game-loop">
+<span id="game-loop"></span><h1>The Game Loop</h1>
+<p>FES makes use of the classic almighty game loop, which every game uses by implementing the <code class="docutils literal"><span class="pre">FES.IFESGame</span></code> interface:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">MyGame</span> <span class="p">:</span> <span class="n">FES</span><span class="p">.</span><span class="n">IFESGame</span>
+<span class="p">{</span>
+    <span class="c1">// First method called by FES, only once on startup to initialize hardware</span>
+    <span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+        <span class="c1">// Set hardware parameters</span>
+
+        <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Called once on startup after QueryHardware()</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Called at a fixed rate</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Called when FES is ready to render to display</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We will explore in detail what we can do in each of these methods in the remainder of this Features document.</p>
+</div>
+<div class="section" id="fixed-frame-rate">
+<h1>Fixed Frame Rate</h1>
+<p>FES runs the <code class="docutils literal"><span class="pre">IFESGame.Update</span></code> at a fixed rate. The default rate is 60 FPS, but a custom rate can be set in <code class="docutils literal"><span class="pre">IFESGame.QueryHardware</span></code>.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+    <span class="n">hw</span><span class="p">.</span><span class="n">FPS</span> <span class="p">=</span> <span class="m">30</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At any time you can query the FPS setting with <code class="docutils literal"><span class="pre">FES.FPS</span></code>, and you can also query the fixed interval between frames in seconds with <code class="docutils literal"><span class="pre">FES.UpdateInterval</span></code>,
+which is simply equivlaent to <code class="docutils literal"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">FES.FPS</span></code>.</p>
+</div>
+<div class="section" id="graphics">
+<h1>Graphics</h1>
+<div class="section" id="new-rendering-pipeline">
+<h2>New Rendering Pipeline</h2>
+<p>As you explore FES it’s important to understand that for all practical purposes FES throws out
+the entire Unity rendering pipeline out the window, and replaces it with it’s own rendering pipeline. This means that in terms of rendering
+what is not explicitly covered by FES will not be available. This includes Unity GUI, Unity Sprites, Meshes, and Animations.
+It helps to think of FES as an API you might have had if you were developing console games in the early 1990s.</p>
+</div>
+<div class="section" id="pixel-perfect-rendering">
+<h2>Pixel Perfect Rendering</h2>
+<p>It can be challenging to get pixel perfect rendering working in Unity. The camera has to be setup just right,
+texture parameters have to be set correctly, and when you’re all done you may still encounter infuriating, and
+non-intuitive issues with pixel going missing, or some pixels being larger than others.</p>
+<p>FES takes care of all those issues with its own rendering framework, and changes to texture importer that take
+care of the details for you. All you have to do is set your desired destination resolution in the call to <code class="docutils literal"><span class="pre">QueryHardware</span></code>
+like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+    <span class="n">hw</span><span class="p">.</span><span class="n">DisplaySize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">320</span><span class="p">,</span> <span class="m">180</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can change the FES display size at any time by calling the <code class="docutils literal"><span class="pre">FES.DisplayModeSet</span></code> API. However, if your native display or window resolution changes at run time
+then FES will scale its pixels appropriately, and possibly use letterboxing, but it will not automatically change the logical resolution
+of your game as defined by <code class="docutils literal"><span class="pre">DisplaySize</span></code>. This may seem like a hindrance at first, but at the same time it is liberating to know that because the
+resolution will not change on you, all your game layouts and menus will also not be affected, and you can always expect the user to have the same field of view.</p>
+<p>If the requested resolution divides evenly into the display’s native resolution then the result will be perfect, sharp pixels.
+However, if the resolution does <strong>not</strong> evenly divide into the display’s native resolution then by definition each pixel cannot be the
+same size, and still fill the display. Pixels of varying sizes are visually jarring, and so to help with this issue FES will blend together pixel edges just
+enough to make the pixels seems like they are equal in size, without causing too much blurring.</p>
+<p>For example:</p>
+<div class="figure align-center" id="id4">
+<img alt="_images/pixelscale_perfect.png" src="_images/pixelscale_perfect.png" />
+<p class="caption"><span class="caption-text">Pixel size divides evenly into display’s native resolution - The pixel scaling is perfect.</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<img alt="_images/pixelscale_naive.png" src="_images/pixelscale_naive.png" />
+<p class="caption"><span class="caption-text">Pixel size does <strong>not</strong> divide evenly into display’s native resolution - Naive scaling results in pixels of varying sizes, just look at these, ridiculous, unacceptable, get outta here.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<img alt="_images/pixelscale_smooth.png" src="_images/pixelscale_smooth.png" />
+<p class="caption"><span class="caption-text">Pixel size does <strong>not</strong> divide evenly into display’s native resolution - FES smooth scaling gives an impression that the pixels are the same size, without overly blurring the image.</span></p>
+</div>
+</div>
+<div class="section" id="pixel-style">
+<h2>Pixel Style</h2>
+<p>The 1980s were a growing time for PC display technology. A lot of odd-ball video modes were developed, and not all of them thought that pixels should be square! To help emulate those
+systems FES has support for wide-pixels (effectively 2x1), and tall-pixels (1x2). You can set the desired pixel mode via <code class="docutils literal"><span class="pre">IFESGame.QueryHardware</span></code> or later via <code class="docutils literal"><span class="pre">FES.DisplayModeSet</span></code>.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+    <span class="n">hw</span><span class="p">.</span><span class="n">PixelStyle</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">PixelStyle</span><span class="p">.</span><span class="n">Wide</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id7">
+<img alt="_images/wide_pixels.png" src="_images/wide_pixels.png" />
+<p class="caption"><span class="caption-text">Wide-pixel format, each pixel is made of 2 x 1 square pixels.</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="_images/tall_pixels.png" src="_images/tall_pixels.png" />
+<p class="caption"><span class="caption-text">Tall-pixel format, each pixel is made of 1 x 2 square pixels.</span></p>
+</div>
+</div>
+<div class="section" id="color-mode">
+<h2>Color Mode</h2>
+<p>FES can operate in two different color modes. A full RGB Mode, or an Indexed Color Mode (aka Palette Color Mode). You may be familiar with these color modes from your favourite painting program.
+You can set the desired color mode in the <code class="docutils literal"><span class="pre">QueryHardware</span></code> call:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+    <span class="n">hw</span><span class="p">.</span><span class="n">ColorMode</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">ColorMode</span><span class="p">.</span><span class="n">RGB</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As with all settings returned in <code class="docutils literal"><span class="pre">QueryHardware</span></code> the <code class="docutils literal"><span class="pre">ColorMode</span></code> will remain the same for the duration of the game.</p>
+<div class="section" id="rgb-color-mode">
+<h3>RGB Color Mode</h3>
+<div class="figure align-right" id="id9">
+<img alt="_images/rgb_tint.png" src="_images/rgb_tint.png" />
+<p class="caption"><span class="caption-text">Original sprite, red tint, and green tint.</span></p>
+</div>
+<p>Full color mode, and 24bit color can be displayed. In this mode all colors are passed to the FES APIs via the <code class="docutils literal"><span class="pre">FES.ColorRGBA</span></code> structure.
+The APIs <code class="docutils literal"><span class="pre">FES.TintColorSet</span></code> and <code class="docutils literal"><span class="pre">FES.TintColorGet</span></code> become available, and can be used to tint the color of subsequent draw calls.</p>
+<div class="clearer docutils container">
+<img alt="_images/spacer.png" src="_images/spacer.png" />
+</div>
+</div>
+<div class="section" id="indexed-color-mode">
+<h3>Indexed Color Mode</h3>
+<div class="figure align-right" id="id10">
+<img alt="_images/indexed_color.png" src="_images/indexed_color.png" />
+<p class="caption"><span class="caption-text">Original sprite, palette color swap, another swap.</span></p>
+</div>
+<p>The Indexed Color Mode restricts you to a default, or user specified color palette (of up to 250 colors). In this mode it is simply not possible
+place down a single pixel that does not belong to the color palette. There is one exception to this rule, when using <code class="docutils literal"><span class="pre">FES.AlphaSet</span></code> it is
+technically possible to produce colors not in the color palette by blending two colors
+together.</p>
+<div class="clearer docutils container">
+In the Indexed Color Mode all colors are passed to the FES APIs via an <code class="docutils literal"><span class="pre">int</span></code> index into the color palette. While <code class="docutils literal"><span class="pre">FES.TintColorSet</span></code> and
+<code class="docutils literal"><span class="pre">FES.TintColorGet</span></code> APIs are not available in this color mode there is a host of new APIs available for manipulating the color palette at
+run-time, and setting up palette color replacement swaps. See the APIs
+<code class="docutils literal"><span class="pre">FES.PaletteColorSet</span></code>, <code class="docutils literal"><span class="pre">FES.PaletteSwapSetup</span></code>, <code class="docutils literal"><span class="pre">FES.PaletteSwapSet</span></code>, <code class="docutils literal"><span class="pre">FES.PaletteSwapGet</span></code>.</div>
+<p>You can use the FES default color palette, or you can specify your own in QueryHardware. The palette should be a PNG image of maximum of 250 pixels where
+each pixel represents a single color in the color palette. The image must be somewhere your Assets under a <code class="docutils literal"><span class="pre">Resources</span></code> folder.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+    <span class="n">hw</span><span class="p">.</span><span class="n">Palette</span> <span class="p">=</span> <span class="s">&quot;MyPalette&quot;</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id11">
+<img alt="_images/default_palette.png" src="_images/default_palette.png" />
+<p class="caption"><span class="caption-text">Default 32 FES color palette if no custom palette is specified.</span></p>
+</div>
+</div>
+<div class="section" id="palette-swapping">
+<span id="id1"></span><h3>Palette Swapping</h3>
+<p>If you have not worked with palettes in the past then palette swapping might be a new concept to you.</p>
+<p>Lets look at this 8 color palette example.</p>
+<div class="figure align-center">
+<img alt="_images/swap1.png" src="_images/swap1.png" />
+</div>
+<p>Palette swapping lets us setup an alternate palette where some colors are replaced by other colors from other positions in the palette. For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">PaletteSwapSetup</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]</span> <span class="p">{</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">0</span> <span class="p">})</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example we setup an alternate palette in palette swap index 1 (0 is reserved for original palette). In this alternate palette colors
+at index 0, 1, 4 and 5 are unchanged. Colors at index 2 and 3 becomes the colors from the original palette at index 4 and 5, and colors at index
+6 and 7 become 2 and 0. Now we can draw again, but this time we tell FES to use this alternate swap palette:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">PaletteSwapSet</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now our sprite will look like this!</p>
+<div class="figure align-center">
+<img alt="_images/swap2.png" src="_images/swap2.png" />
+</div>
+<p>One thing to note here is that while you can freely call <code class="docutils literal"><span class="pre">FES.PaletteSwapSet</span></code> at any time while rendering, <code class="docutils literal"><span class="pre">FES.PaletteSwapSetup</span></code> may not take effect until the end of
+the <code class="docutils literal"><span class="pre">FES.IFESGame.Render</span></code> call, and so it should ideally be called in <code class="docutils literal"><span class="pre">FES.IFESGame.Update</span></code> or <code class="docutils literal"><span class="pre">FES.IFESGame.Initialize</span></code> to setup your palette swaps ahead of time.</p>
+<p>Hopefully your mind is swimming with possibilities. You could now have a single dragon in your sprite sheet, and with a few quick palette swaps setups
+you can now have a fire dragon, an ice dragon, a poison drake, and a glowing ummm fancy dragon.</p>
+</div>
+</div>
+<div class="section" id="sprites">
+<h2>Sprites</h2>
+<div class="section" id="sprite-sheets">
+<h3>Sprite Sheets</h3>
+<p>FES allows you to setup multiple sprite sheets, and each sprite sheet may have different sprite sizes. You can setup a sprite sheet at any time, or simply do it ahead of
+time in your <code class="docutils literal"><span class="pre">FES.IFESGame.Initialize</span></code> implementation:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">SpriteSheetSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;EnemySprites&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">16</span><span class="p">,</span> <span class="m">16</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">SpriteSheetSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;ItemSprites&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">SpriteSheetSet</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Once a sprite sheet is setup you can select it as the current sprite sheet with a simple call to <code class="docutils literal"><span class="pre">FES.SpriteSheetSet()</span></code> as shown above.</p>
+<p>For your sprite sheets you should use a loss-less image format such as PNG. Sprite sheets can be any size supported by your target device and Unity. It’s recommended
+that you try not to exceed 2048x2048 if you plan to deploy your game to mobile devices. Some higher end mobile devices can comfortably support 4096x4096 textures.</p>
+<p>If you’ve requested Indexed Color Mode it is important to make sure that all the colors used in your sprite sheets are part of your color palette. Any color that
+is not part of the palette will cause a run-time error when <code class="docutils literal"><span class="pre">FES.SpriteSheetSetup</span></code> is called. If your sprite sheet has such naughty colors then as a
+convenience an image file named <code class="docutils literal"><span class="pre">InvalidSpritePixels.png</span></code> will be created in the root folder of your project. This image will highlight the offending pixels in purple.</p>
+<div class="figure align-left">
+<img alt="_images/bad_spritesheet_error.png" src="_images/bad_spritesheet_error.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center">
+<img alt="_images/bad_spritesheet_highlight.png" src="_images/bad_spritesheet_highlight.png" />
+</div>
+<div class="clearer docutils container">
+Notice that when setting up a sprite sheet you also specify the size of each sprite as can be seen in the code above.
+The sprite size is used when drawing individual sprites from the sprite sheet (it’s also possible to copy from arbitrary rectangular
+region in a sprite sheet), and more importantly the sprite size also represents the tile size in a tilemap layer. Each layer can use
+a different sprite sheet, so each layer does not need to have the same tile size.</div>
+<p>You should never have to worry about your texture settings in Unity, FES hooks into the texture import pre-processor and takes care of the settings for you.</p>
+<p>When you no longer need a particular sprite sheet you can free up resources with <code class="docutils literal"><span class="pre">FES.SpriteSheetDelete</span></code>.</p>
+</div>
+<div class="section" id="drawing">
+<h3>Drawing</h3>
+<p>Drawing a sprite is simplicity itself. You may be used to having to create GameObjects in Unity and putting your sprites into the Scene tree. With FES you simply use the
+<code class="docutils literal"><span class="pre">FES.DrawSprite</span></code> inside of the <code class="docutils literal"><span class="pre">IFESGame.Render</span></code> method. For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="cm">/* Sprite index */</span>
+                   <span class="k">new</span> <span class="nf">Vector2i</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example a sprite at index 0 (the first cell in your sprite sheet) is drawn at position 100, 100.</p>
+<p>Instead of drawing by sprite index, you may also copy arbitrary rectangular region from the sprite sheet like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawCopy</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">128</span><span class="p">),</span>
+                 <span class="k">new</span> <span class="nf">Vector2i</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example copies a rectangular region from the sprite sheet starting a position 0, 0, 64 pixels wide, and 128 pixels high, to the position
+100, 100 on the display.</p>
+<p>There are a few other method overloads to DrawSprite and DrawCopy that allow for scaling, rotation, and horizontal and vertical flipping. Have
+a look at the <code class="docutils literal"><span class="pre">DemoReel</span></code> example project, and the <a class="reference internal" href="apiref.html"><span class="doc">API Reference</span></a></p>
+</div>
+<div class="section" id="nine-slice-sprite">
+<h3>Nine-Slice Sprite</h3>
+<p>FES also supports 9-slice sprites. This kind of sprite is made out of 9 pieces, and can scale itself by repeating some of the pieces, while keeping others fixed.
+These sprites are often used for UI and dialogs.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="m">49</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">49</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawNineSlice</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">16</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">200</span><span class="p">,</span> <span class="m">100</span><span class="p">),</span>   <span class="c1">// Destination</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">80</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// A</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">88</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// B</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// C</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">80</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// E</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">88</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// X</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// F</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">80</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>       <span class="c1">// G</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">88</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>       <span class="c1">// H</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">));</span>      <span class="c1">// I</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/nineslice.png" class="align-center" src="_images/nineslice.png" />
+<p>This large 9-slice sprite is made of these tiny pieces:</p>
+<img alt="_images/nineslice_parts.png" class="align-center" src="_images/nineslice_parts.png" />
+<p>The pieces A, C, G, and I are always drawn in the corners of the 9-slice sprite. B and H are repeated horizontally.
+E and F are repeated vertically. Finally, X is repeated in both directions to fill the middle of the 9-slice sprite.</p>
+<p>For best results each of these groups of pieces should should be the same height:</p>
+<ul class="simple">
+<li>A, B, C</li>
+<li>E, F</li>
+<li>G, H, I</li>
+</ul>
+<p>These groups should be the same width:</p>
+<ul class="simple">
+<li>A, E, G</li>
+<li>B, H</li>
+<li>C, F, I</li>
+</ul>
+<p>The piece X can be any size.</p>
+<p>It is recommended that you don’t make these pieces too small to limit the amount of times they have to be repeated to fill
+your nine-slice sprite.</p>
+<p>You might notice that this particular 9-slice sprite is symmetric. For convenience you could use this short-hand API instead to render it:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="m">49</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">49</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawNineSlice</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">16</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">200</span><span class="p">,</span> <span class="m">100</span><span class="p">),</span>   <span class="c1">// Destination</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">80</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// A, C, G, I</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">88</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span>        <span class="c1">// B, E, F, H</span>
+        <span class="k">new</span> <span class="nf">Rect2i</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">));</span>       <span class="c1">// X</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>FES will simply mirror the remaining pieces of the 9-slice image.</p>
+</div>
+</div>
+<div class="section" id="primitives">
+<h2>Primitives</h2>
+<p>It can often be useful to draw geometric primitives, and FES allows you to do so very easily. There are APIs for drawing pixels, rectangles, ellipses, and lines.
+For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawPixel</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawRect</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect2i</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawRectFill</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect2i</span><span class="p">(</span><span class="m">70</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawEllipse</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">128</span><span class="p">,</span> <span class="m">128</span><span class="p">),</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">255</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawEllipseFill</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">196</span><span class="p">,</span> <span class="m">128</span><span class="p">),</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">255</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawEllipseInvertedFill</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">256</span><span class="p">,</span> <span class="m">128</span><span class="p">),</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="m">32</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">255</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawLine</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">64</span><span class="p">),</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">128</span><span class="p">,</span> <span class="m">128</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These should be pretty self explanatory, perhaps with the exception of <code class="docutils literal"><span class="pre">FES.DrawEllipseInvertedFill</span></code> which fills the area outside of the ellipse rather than inside.</p>
+<img alt="_images/draw_primitives.png" class="align-center" src="_images/draw_primitives.png" />
+</div>
+<div class="section" id="fonts">
+<h2>Fonts</h2>
+<p>Pixel font rendering is also easy to do with FES.</p>
+<div class="section" id="built-in-fes-font">
+<h3>Built-in FES Font</h3>
+<p>For simple cases, or for development purposes you can print text with the built-in FES font right out of the box:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="s">&quot;Hello there!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/builtin_font.png" class="align-center" src="_images/builtin_font.png" />
+</div>
+<div class="section" id="custom-font">
+<h3>Custom Font</h3>
+<p>Defining custom pixel font is also easy. There are a few requirements.</p>
+<ul class="simple">
+<li>The font glyphs have to be somewhere in your sprite sheet, layed out in a grid.</li>
+<li>Each grid cell must be the same size (don’t worry FES will automatically trim the horizontal whitespace).</li>
+<li>The glyphs must be in ascending ASCII order, with no ASCII character gaps between the first and last characters.</li>
+<li>There are additional requirements if using <code class="docutils literal"><span class="pre">ColorMode.Indexed</span></code> see <a class="reference internal" href="#custom-font-indexed"><span class="std std-ref">Custom Font in Indexed Mode</span></a>.</li>
+</ul>
+<div class="figure align-center">
+<img alt="_images/custom_font_spritesheet.png" src="_images/custom_font_spritesheet.png" />
+</div>
+<p>In this example the font appears in the sprite sheet starting at position 0, 16. Each glyph is 12x12 pixels in size. The grid is 10 columns wide.
+The first ASCII character is <code class="docutils literal"><span class="pre">A</span></code> and the last is <code class="docutils literal"><span class="pre">Z</span></code>. The font in this sprite sheet can be setup like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">FontSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="sc">&#39;Z&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">16</span><span class="p">),</span> <span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="m">12</span><span class="p">),</span> <span class="m">10</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will setup the font at font index 0 with the parameters shown in the sprite sheet above. Additionally we specify that character spacing is
+1 pixel and line spacing is 2 pixels, and that this not a mono-spaced font. This font also uses sprite sheet index 0.</p>
+<p>Once setup we can print with this font just as easily as with the built-in font, adding only the font index.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="s">&quot;HELLO THERE!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/custom_font.png" class="align-center" src="_images/custom_font.png" />
+<p>Note that the exclamation mark <code class="docutils literal"><span class="pre">!</span></code> did not render because it was not part of the font as it was defined, unsupported glyphs are shown as empty spaces.</p>
+<div class="section" id="custom-font-in-indexed-mode">
+<span id="custom-font-indexed"></span><h4>Custom Font in Indexed Mode</h4>
+<p>In <code class="docutils literal"><span class="pre">ColorMode.Indexed</span></code> mode there is an additional parameter <code class="docutils literal"><span class="pre">paletteSwapSupport</span></code> you can pass to <code class="docutils literal"><span class="pre">FES.FontSetup</span></code>. If <code class="docutils literal"><span class="pre">true</span></code> this parameter indicates that
+color parameters passed while printing are actually palette swap indecies, see <a class="reference internal" href="#palette-swapping"><span class="std std-ref">Palette Swapping</span></a>. If the parameter is <code class="docutils literal"><span class="pre">false</span></code> then the font must be drawn
+in the sprite sheet using color index 0 only.</p>
+</div>
+</div>
+<div class="section" id="inline-string-coloring">
+<h3>Inline String Coloring</h3>
+<p>As shown above you can specify which color to print with, and you can also specify inline color changes in your text string!</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">),</span> <span class="s">&quot;HP: @FF404010@-/@40FF40100&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/font_inline_color.png" class="align-center" src="_images/font_inline_color.png" />
+<p>In RGB Color Mode the syntax for inline color changes is <code class="docutils literal"><span class="pre">&#64;RRGGBB</span></code> where <code class="docutils literal"><span class="pre">RRGGBB</span></code> are 2 digit hex color codes between <code class="docutils literal"><span class="pre">00</span></code> and <code class="docutils literal"><span class="pre">FF</span></code> for the red,
+green, and blue color channels.</p>
+<p>In Indexed Color Mode the syntax is <code class="docutils literal"><span class="pre">&#64;III</span></code> where <code class="docutils literal"><span class="pre">III</span></code> is a 3 digit decimal palette color index between <code class="docutils literal"><span class="pre">000</span></code> and <code class="docutils literal"><span class="pre">250</span></code>.</p>
+<p>Additionally you may revert the color back to the color originally specified in the <code class="docutils literal"><span class="pre">FES.Print</span></code> parameters by using the sequence <code class="docutils literal"><span class="pre">&#64;-</span></code>. In this
+example the original color was <code class="docutils literal"><span class="pre">ColorRGBA(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></code>.</p>
+<p>To print the <code class="docutils literal"><span class="pre">&#64;</span></code> character you can use the sequence <code class="docutils literal"><span class="pre">&#64;&#64;</span></code>.</p>
+</div>
+<div class="section" id="text-alignment">
+<h3>Text Alignment</h3>
+<p>Instead of specifying a position at which to print text you can instead specify a rectangular region to place the text in, and apply text alignment.</p>
+<p>For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">40</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">),</span>
+        <span class="n">FES</span><span class="p">.</span><span class="n">ALIGN_H_CENTER</span> <span class="p">|</span> <span class="n">FES</span><span class="p">.</span><span class="n">ALIGN_V_CENTER</span><span class="p">,</span>
+        <span class="s">&quot;Kind stranger, please\nkill 10 rats\nin my basement!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id12">
+<img alt="_images/text_align.png" src="_images/text_align.png" />
+<p class="caption"><span class="caption-text">Different combinations of the flags <code class="docutils literal"><span class="pre">FES.ALIGN_H_LEFT</span></code>, <code class="docutils literal"><span class="pre">FES.ALIGN_H_CENTER</span></code>, <code class="docutils literal"><span class="pre">FES.ALIGN_H_RIGHT</span></code>, <code class="docutils literal"><span class="pre">FES.ALIGN_V_TOP</span></code>, <code class="docutils literal"><span class="pre">FES.ALIGN_V_CENTER</span></code>, <code class="docutils literal"><span class="pre">FES.ALIGN_V_BOTTOM</span></code>.</span></p>
+</div>
+</div>
+<div class="section" id="text-clipping">
+<h3>Text Clipping</h3>
+<p>If you specify a rectangular text area then you may also want to specify how the text will behave if it does not fit in the rectangular area.
+You could just let it overflow beyond the rectangular area, you could clip it, or use automatic text wrapping.</p>
+<p>For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">80</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">),</span>
+        <span class="n">FES</span><span class="p">.</span><span class="n">ALIGN_H_CENTER</span> <span class="p">|</span> <span class="n">FES</span><span class="p">.</span><span class="n">ALIGN_V_CENTER</span> <span class="p">|</span> <span class="n">FES</span><span class="p">.</span><span class="n">TEXT_OVERFLOW_CLIP</span> <span class="p">|</span> <span class="n">TEXT_OVERFLOW_WRAP</span><span class="p">,</span>
+        <span class="n">myText</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id13">
+<img alt="_images/text_clip.png" src="_images/text_clip.png" />
+<p class="caption"><span class="caption-text">Different combinations of the flags <code class="docutils literal"><span class="pre">FES.TEXT_OVERFLOW_CLIP</span></code>, <code class="docutils literal"><span class="pre">TEXT_OVERFLOW_WRAP</span></code>.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="tilemaps">
+<h2>Tilemaps</h2>
+<p>FES supports orthogonal tilemaps with multiple layers. Each tile in a tilemap layer is the same size as it’s sprite sheet’s sprite size.
+The tilemap has a few other configurable parameters that can be set in <code class="docutils literal"><span class="pre">QueryHardware</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+    <span class="n">hw</span><span class="p">.</span><span class="n">MapSize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">256</span><span class="p">,</span> <span class="m">256</span><span class="p">);</span>
+    <span class="n">hw</span><span class="p">.</span><span class="n">MapLayers</span> <span class="p">=</span> <span class="m">8</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">MapSize</span></code> is the maximum size of a single tilemap layer, and <code class="docutils literal"><span class="pre">MapLayers</span></code> defines the total amount of layers the tilemap supports. Ideally you should keep these numbers
+close to the minimum requirement for your game, to conserve system memory.</p>
+<p>FES internally optimizes tilemaps into Mesh chunks to minimze the amount of draw calls to the GPU. You don’t have to worry about what that means, you
+just need to know that using tilemaps is far more efficient than drawing individual tiles by hand using <code class="docutils literal"><span class="pre">FES.DrawSprite</span></code>.</p>
+<div class="section" id="id2">
+<h3>Drawing</h3>
+<p>Tilemaps are drawn one layer at a time, giving you control of where and when each layer is drawn. This allows you to easily layer other drawing between layers of tilemap.
+For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawMapLayer</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawMapLayer</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This code draws tilemap layer 0 first, then draws a sprite at position 100, 100, and then draws tilemap layer 1 on top of the sprite.</p>
+<div class="figure align-center">
+<img alt="_images/tilemap.png" src="_images/tilemap.png" />
+</div>
+</div>
+<div class="section" id="changing-layer-sprite-sheet">
+<h3>Changing Layer Sprite Sheet</h3>
+<p>By default all tile map layers use sprite sheet at index 0, you can change this at any time like so:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">MapLayerSpriteSheetSet</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example we set the tile map layer 0 to use sprite sheet 2. Note that if the new sprite sheet has different sized sprites than the previous sprite sheet then
+this layer’s tiles will be resized to fit the new sprites.</p>
+</div>
+<div class="section" id="setting-getting-tile-info">
+<h3>Setting/Getting Tile Info</h3>
+<p>You can change the content of a tilemap at run-time. For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">MapSpriteSet</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span> <span class="m">0</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">MapDataSet</span><span class="p">&lt;</span><span class="n">MyStruct</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span> <span class="n">myStructInstance</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This code sets the tile at position 4, 8 in tilemap layer 1 to use sprite at index 0. It also sets the data object for position 4, 8 to be <code class="docutils literal"><span class="pre">myStructInstance</span></code>. What’s a
+data object? It’s anything you want it to be, or nothing at all. For example if you’re developing a dungeon crawler you may want the data object to contain the collision
+flags for this tile, and a list of items that may be laying on the ground. Note that there is only one data object per tilemap position shared by all the tilemap layers.</p>
+<p>Likewise you can read back the parameters you’ve set for your tile:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">spriteIndex</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">MapSpriteGet</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">));</span>
+    <span class="n">MyStruct</span> <span class="n">s</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">MapDataGet</span><span class="p">&lt;</span><span class="n">MyStruct</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tmx-loading">
+<h3>TMX loading</h3>
+<p>Seting tiles one by one through code for an entire world is not going to be pleasant experience. You should design your tilemaps in some external application,
+and then write a utility method that loads the map from file, and sets the tiles using <code class="docutils literal"><span class="pre">FES.MapSpriteSet</span></code>. Better yet, make your tilemaps in the famed Tiled tool, and use
+FES built-in TMX loading support to quickly load any layer from your TMX file to a FES tilemap layer:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Size2i</span> <span class="n">layerSize</span><span class="p">;</span>
+    <span class="n">MapLoadTMX</span><span class="p">(</span><span class="s">&quot;MyMapFile&quot;</span><span class="p">,</span> <span class="s">&quot;Ground Layer&quot;</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="k">out</span> <span class="n">layerSize</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This code will load a map layer named <code class="docutils literal"><span class="pre">Ground</span> <span class="pre">Layer</span></code> from a TMX file called <code class="docutils literal"><span class="pre">MyMapFile</span></code> into FES tilemap layer 0. It will also return the loaded layer
+size through the optional layerSize parameter.</p>
+<p>Note that as with other file resources the TMX files should be located in your Assets under a <code class="docutils literal"><span class="pre">Resources</span></code> folder. Moreover, the TMX file should be saved
+with an <code class="docutils literal"><span class="pre">*.xml</span></code> extension because Unity will not package <code class="docutils literal"><span class="pre">*.tmx</span></code> in the resource bundle.</p>
+<p>FES supports TMX files with the Tile Layer Formats: <code class="docutils literal"><span class="pre">CSV</span></code> and <code class="docutils literal"><span class="pre">Base64</span> <span class="pre">(zlib</span> <span class="pre">compressed)</span></code>.</p>
+</div>
+</div>
+<div class="section" id="alpha-transparency">
+<h2>Alpha Transparency</h2>
+<p><code class="docutils literal"><span class="pre">FES.AlphaSet</span></code> can be used to set alpha transparency that applies to all drawing that follows until alpha is set again, or <code class="docutils literal"><span class="pre">FES.IFESGame.Render</span></code> exits.</p>
+<div class="figure align-right">
+<img alt="_images/alpha.png" src="_images/alpha.png" />
+</div>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">AlphaSet</span><span class="p">(</span><span class="m">127</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="clearer docutils container">
+<img alt="_images/spacer.png" src="_images/spacer.png" />
+</div>
+</div>
+<div class="section" id="clip-region">
+<h2>Clip Region</h2>
+<p>Sometimes you may want to restrict which region of the display FES is allowed to draw to. We call this the clipping region, and in FES you can set it with:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ClipSet</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect2</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example the clip region is set to the upper left 8 by 8 pixel rectangle, and so the following <code class="docutils literal"><span class="pre">DrawSprite</span></code> call will only draw a portion of the
+sprite to the display. The clip region remains in effect for all following draw calls until the <code class="docutils literal"><span class="pre">Render</span></code> method exits, or until it is changed again.</p>
+<p>Here is another example in action:</p>
+<div class="figure align-center" id="id14">
+<img alt="_images/clip.png" src="_images/clip.png" />
+<p class="caption"><span class="caption-text">The blue area is in the clip region, the dark gray area is outside the clip region.</span></p>
+</div>
+<div class="section" id="clip-region-debugging">
+<h3>Clip Region Debugging</h3>
+<p>It can be difficult to debug rendering issues with clip regions. You may sometimes be unsure if your sprite is rendering at all, or if the clip region is in the wrong place. The <code class="docutils literal"><span class="pre">FES.ClipDebugEnable</span></code> and <code class="docutils literal"><span class="pre">FES.ClipDebugDisable</span></code> APIs can assist with these types of issues.</p>
+</div>
+</div>
+<div class="section" id="offscreen-drawing">
+<h2>Offscreen Drawing</h2>
+<p>It can be occasionally useful to be able to draw to an offscreen surface, and then copy all, or parts of this offscreen surface to the display.
+You can create many offscreens of various sizes, and you can even copy from one offscreen to another.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">OffscreenSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">256</span><span class="p">,</span> <span class="m">256</span><span class="p">));</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Offscreen</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">OffscreenClear</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">),</span> <span class="n">myLargeString</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">Onscreen</span><span class="p">();</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawCopyOffscreen</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Rect2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">256</span><span class="p">,</span> <span class="m">256</span><span class="p">),</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="n">FES</span><span class="p">.</span><span class="n">FLIP_H</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example first switches rendering to offscreen with the <code class="docutils literal"><span class="pre">Offscreen</span></code> method. Next it clears the offscreen surface, and draws a large text
+string to the offscreen surface.</p>
+<p>Once done the example then switches back to drawing on the display with the <code class="docutils literal"><span class="pre">Onscreen</span></code> method. Finally it copies a 256 by 256 pixel area from the Offscreen
+surface to the Display, flipping it horizontally in the process, because why not?</p>
+<p>Note that you do not need to clear the offscreen surface on every update. In this example we could have drawn the text on the offscreen surface and left it there
+for subsequent <code class="docutils literal"><span class="pre">Render</span></code> calls to copy from. If the text was sufficiently long enough then this could result in significant performance gains because FES would
+no longer be rendering the text glyph by glyph ever frame, but instead it would copy it as a single rectangular region.</p>
+<p>Keep in mind that the offscreen surface is only as big as your display surface.</p>
+<div class="figure align-center" id="id15">
+<img alt="_images/offscreen.png" src="_images/offscreen.png" />
+<p class="caption"><span class="caption-text">Here we have everyone’s favourite placeholder text “Lorem ipsum” printed on an offscreen surface, and rendered to display, flipped horizontally.</span></p>
+</div>
+<p>When you no longer need an offscreen you can free up it’s resources by calling <code class="docutils literal"><span class="pre">FES.OffscreenDelete</span></code>.</p>
+</div>
+<div class="section" id="camera">
+<h2>Camera</h2>
+<p>FES supports a concept of a very simple 2D camera. All drawing in FES is simply offset by the camera position. By default the camera position is 0, 0, so you may
+have not event realized there is a concept of a camera if you haven’t used it. While simple, this camera can be extremely useful when your game has a scrolling play area.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">CameraSet</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(-</span><span class="m">32</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here we draw a sprite at position 0, 0, but because the camera has moved 32 pixels to the left the sprite will actually be draw at position 32, 0 on the display.</p>
+<div class="figure align-center" id="id16">
+<img alt="_images/camera.png" src="_images/camera.png" />
+<p class="caption"><span class="caption-text">Moving camera to the left shifts everything on the display to the right, this image should help visualize how that works.</span></p>
+</div>
+</div>
+<div class="section" id="post-processing-effects">
+<span id="post-processing"></span><h2>Post-Processing Effects</h2>
+<p>Post-Processing effect are a mixed bag of rendering effects that can be applied to the entire display after the <code class="docutils literal"><span class="pre">Render</span></code> method exits. It’s up to you how you
+want to use these effects, if at all.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">EffectSet</span><span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">Effect</span><span class="p">.</span><span class="n">Scanlines</span><span class="p">,</span> <span class="m">0.2f</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example applies a subtle retro CRT scanline effect to your display.</p>
+<p>You can layer multiple effects together by setting them one by one.</p>
+<p>There are a bunch of other effects, have a look at all of them in the <a class="reference internal" href="apiref.html"><span class="doc">API Reference</span></a>, or better yet check out the <code class="docutils literal"><span class="pre">DemoReel.cs</span></code> demo for a live preview of all
+the available effects.</p>
+<div class="figure align-center" id="id17">
+<img alt="_images/scanlines.png" src="_images/scanlines.png" />
+<p class="caption"><span class="caption-text">Super Flag Run demo game uses Scanlines and Noise effects to give a bit more grit and retroness.</span></p>
+</div>
+<div class="section" id="post-processing-early">
+<h3>Post-Processing Early</h3>
+<p>Normally post-processing effects are applied at the end of the render frame. In practice this means that everything you draw to the screen will have the same post-processing effects applied.
+There are scenarios where this might be undesirable. For example you may want to apply a <code class="docutils literal"><span class="pre">Effect.Scanlines</span></code> and <code class="docutils literal"><span class="pre">Effect.Shake</span></code> effects to your game scene, but only <code class="docutils literal"><span class="pre">Effect.Scanlines</span></code> to your GUI. To achieve this you may use the <code class="docutils literal"><span class="pre">FES.EffectApplyNow()</span></code> API to tell FES to immediately apply post-processing effects and then let you continue to draw
+on top of them!</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">EffectSet</span><span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">Effect</span><span class="p">.</span><span class="n">Shake</span><span class="p">,</span> <span class="m">0.5f</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">EffectSet</span><span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">Effect</span><span class="p">.</span><span class="n">Scanlines</span><span class="p">,</span> <span class="m">0.25f</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawMapLayer</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">EffectApplyNow</span><span class="p">();</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">EffectSet</span><span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">Effect</span><span class="p">.</span><span class="n">Shake</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+
+    <span class="n">DrawMyGUI</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id18">
+<img alt="_images/pp_applynow.png" src="_images/pp_applynow.png" />
+<p class="caption"><span class="caption-text">Noise and desaturation effect applied to the game scene, but not to the character nor the text field.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="shaders-advanced-topic">
+<h2>Shaders (Advanced Topic)</h2>
+<p>FES supports custom shaders when drawing, and when appyling <a class="reference internal" href="#post-processing"><span class="std std-ref">Post-Processing Effects</span></a>. Shaders can be very powerful, and enable all sorts of potential for custom effect. However shaders
+can be intimidating for new game developers and are considered a more advanced topic. Nonetheless FES strives to make shaders as simple as possible, and there are troves of general shader tutorials online!</p>
+<div class="section" id="loading-a-shader">
+<h3>Loading a Shader</h3>
+<p>Unity stores shaders like resources, each shader has a <code class="docutils literal"><span class="pre">.shader</span></code> extension and should live somewhere under a <code class="docutils literal"><span class="pre">Resources</span></code> folder. Shaders are loaded just like all other FES resources, with <code class="docutils literal"><span class="pre">ShaderSetup()</span></code>. If you’re familiar with Unity you may be wondering where <code class="docutils literal"><span class="pre">Materials</span></code> come in to play, well they don’t, FES will take care of that for you!</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;AmazingShader&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enabling-a-shader">
+<h3>Enabling a Shader</h3>
+<p>Once a shader is loaded you can enable it for rendering with a simple call to <code class="docutils literal"><span class="pre">ShaderSet()</span></code>. The shader will then by applied to all subsequent drawing operations, until a different shader is set, <code class="docutils literal"><span class="pre">ShaderReset()</span></code> is called, or the frame ends.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderSet</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">64</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderReset</span><span class="p">();</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">128</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example above the first sprite is drawn using the default FES shader, the second sprite is drawn using the custom shader loaded into shader index 0, and finally the third sprite
+is again drawn with the default FES shader.</p>
+<img alt="_images/shader_example.png" class="align-center" src="_images/shader_example.png" />
+</div>
+<div class="section" id="setting-shader-variables">
+<h3>Setting Shader Variables</h3>
+<p>You can set shader global variables using any of the <code class="docutils literal"><span class="pre">FES.Shader*Set()</span></code> APIs.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderSet</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderFloatSet</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;Wave&quot;</span><span class="p">,</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">Sinf</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderApplyNow</span><span class="p">();</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderFloatSet</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;Wave&quot;</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">64</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example assumes that the shader loaded into index 0 has a global property named <code class="docutils literal"><span class="pre">Wave</span></code>. The first sprite is rendered with the <code class="docutils literal"><span class="pre">Wave</span></code> property set to <code class="docutils literal"><span class="pre">Mathf.Sinf(t)</span></code>, and the second sprite
+is rendered with the <code class="docutils literal"><span class="pre">Wave</span></code> property set to 0.</p>
+<p>You may be wondering what the <code class="docutils literal"><span class="pre">FES.ShaderApplyNow()</span></code> call is all about. If that call was taken out the first sprite would be rendered with the <code class="docutils literal"><span class="pre">Wave</span></code> property set to 0 as well! This is because sprites are not rendered immediately but are batched for later rendering. If the value of the <code class="docutils literal"><span class="pre">Wave</span></code> property changes between the time <code class="docutils literal"><span class="pre">FES.DrawSprite</span></code> is called and when it is actually renendered then only the most recent value of the <code class="docutils literal"><span class="pre">Wave</span></code> property will be used. <code class="docutils literal"><span class="pre">FES.ShaderApplyNow</span></code> flushes any batched sprites immediately, ensuring they use the most recently set shader property values at that time that <code class="docutils literal"><span class="pre">FES.ShaderApplyNow</span></code> is called. Ideally you will want to limit how many times you call <code class="docutils literal"><span class="pre">FES.ShaderApplyNow</span></code> or switch shaders, because each time that you do you will interrupt a sprite batch and cause a flush of the rendering pipepline, which reduces performance.</p>
+<p>For optimal performance consider using <code class="docutils literal"><span class="pre">FES.ShaderPropertyID</span></code> to prefetch shader property IDs, instead of passing them as strings. For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="kt">int</span> <span class="n">mWaveID</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;AmazingShader&quot;</span><span class="p">);</span>
+    <span class="n">mWaveID</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">ShaderPropertyID</span><span class="p">(</span><span class="s">&quot;Wave&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderSet</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderFloatSet</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">mWaveID</span><span class="p">,</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">Sinf</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="offscreen-surfaces-in-shaders">
+<h3>Offscreen Surfaces in Shaders</h3>
+<p>Many shaders will want to access (known as sampling) the pixels of an offscreen texture. This can be done using the <code class="docutils literal"><span class="pre">FES.ShaderOffscreenTextureSet()</span></code> API in which you can pass the offscreen index. You may also use <code class="docutils literal"><span class="pre">FES.ShaderOffscreenFilterSet()</span></code> to specify how the offscreen should be sampled, either using the default <code class="docutils literal"><span class="pre">FES.Filter.Nearest</span></code>, or <code class="docutils literal"><span class="pre">FES.Filter.Linear</span></code> which interpolates pixels colors based on neighbouring pixels.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderSet</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderOffscreenTextureSet</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;Offscreen&quot;</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderOffscreenFilterSet</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">FES</span><span class="p">.</span><span class="n">Filter</span><span class="p">.</span><span class="n">Linear</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">DrawSprite</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-a-fes-shader">
+<h3>Writing a FES Shader</h3>
+<p>Custom shaders in FES should build on top of existing FES Shaders because FES internals still need to be satisified by your shaders as well. Refer to the table below for suggestions on
+which shader to base your custom shader on.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Scenario</th>
+<th class="head">Base Shader</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Drawing in ColorMode.Indexed</td>
+<td><code class="docutils literal"><span class="pre">FES/Internal/Materials/DrawShaderIndexed.shader</span></code></td>
+</tr>
+<tr class="row-odd"><td>Drawing in ColorMode.RGB</td>
+<td><code class="docutils literal"><span class="pre">FES/Internal/Materials/DrawShaderRGB.shader</span></code></td>
+</tr>
+<tr class="row-even"><td>Post-Processing</td>
+<td><code class="docutils literal"><span class="pre">FES/Internal/Materials/PresentBasicShader.shader</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The shaders are documented, and make suggestions on where you should add your custom shader source, and properties.
+For an example of custom shaders please have a look at the DemoReel example!</p>
+<p>Below is a shader from the DemoReel example that creates a masking and wavy effect. The meat of the
+code is in the section commented with:</p>
+<p><code class="docutils literal"><span class="pre">/***</span> <span class="pre">Insert</span> <span class="pre">custom</span> <span class="pre">fragment</span> <span class="pre">shader</span> <span class="pre">code</span> <span class="pre">here</span> <span class="pre">***/</span></code></p>
+<p>The properties <code class="docutils literal"><span class="pre">Wave</span></code> and <code class="docutils literal"><span class="pre">Mask</span></code> used by this shader were added to the section:</p>
+<p><code class="docutils literal"><span class="pre">/***</span> <span class="pre">Insert</span> <span class="pre">custom</span> <span class="pre">shader</span> <span class="pre">properties</span> <span class="pre">here</span> <span class="pre">***/</span></code></p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span>Shader &quot;Unlit/DrawShaderRGB&quot;
+{
+    SubShader
+    {
+        Tags { &quot;RenderType&quot; = &quot;Opaque&quot; }
+        LOD 100
+        Ztest never
+        Zwrite off
+        Blend SrcAlpha OneMinusSrcAlpha
+
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include &quot;UnityCG.cginc&quot;
+
+            struct vert_in
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+                float2 flags : TEXCOORD1;
+                fixed4 color : COLOR;
+            };
+
+            struct frag_in
+            {
+                float2 uv : TEXCOORD0;
+                float3 data : TEXCOORD1;
+                fixed4 color : COLOR;
+            };
+
+            sampler2D _SpritesTexture;
+            sampler2D _SystemTexture;
+            float2 _SystemTextureSize;
+
+            float4 _Clip;
+            float _GlobalAlpha;
+
+            /*** Insert custom shader properties here ***/
+            sampler2D Mask;
+            float Wave;
+
+            frag_in vert(vert_in v, out float4 screen_pos : SV_POSITION)
+            {
+                frag_in o;
+                o.uv = v.uv;
+                o.data = float3(v.vertex.z, v.flags.x, v.flags.y);
+                o.color = v.color;
+
+                // Get onscreen position of the vertex
+                screen_pos = UnityObjectToClipPos(float4(v.vertex.xy, 0, 0));
+
+                /*** Insert custom vertex shader code here ***/
+
+                return o;
+            }
+
+            // Performs test against the clipping region
+            float clip_test(float2 p, float2 bottom_left, float2 top_right)
+            {
+                float2 s = step(bottom_left, p) - step(top_right, p);
+                return s.x * s.y;
+            }
+
+            float4 frag(frag_in i, UNITY_VPOS_TYPE screen_pos : VPOS) : SV_Target
+            {
+                // 1 if we&#39;re drawing from a spritesheet texture, 0 if not
+                int user_tex_flag = int(i.data.y);
+
+                float4 sprite_pixel_color = (tex2D(_SpritesTexture, i.uv) * user_tex_flag) +
+                                            (tex2D(_SystemTexture, i.uv) * (1 - user_tex_flag));
+
+                // Perform clip test on the pixel
+                sprite_pixel_color.a *= clip_test(screen_pos.xy, _Clip.xy, _Clip.zw);
+
+                // Multiply in vertex alpha and current global alpha setting
+                sprite_pixel_color *= i.color;
+                sprite_pixel_color.a *= _GlobalAlpha;
+
+                /*** Insert custom fragment shader code here ***/
+
+                // Sample the mask texture
+                i.uv.x += sin(Wave + i.uv.y * 8) * 0.025;
+                i.uv.y += cos(Wave - i.uv.x * 8) * 0.015;
+                float4 mask_color = tex2D(Mask, i.uv).rgba;
+
+                // Multiply the sprite pixel by mask color
+                return sprite_pixel_color * mask_color;
+            }
+            ENDCG
+        }
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="post-processing-shaders">
+<span id="post-processing-shader"></span><h3>Post-Processing Shaders</h3>
+<p>Shaders can also be used at the post-processing stage. These shaders are different in that they work in the native window resoution of your game, whereas the drawing shaders work in the FES.DisplaySize resolution of your game. For post-processing shaders you will still use many of the same shader APIs, but you set the post processing effect shader like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">EffectShader</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+    <span class="n">FES</span><span class="p">.</span><span class="n">ShaderFloatSet</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;Wave&quot;</span><span class="p">,</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">Sin</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that custom post processing shaders bypass many of the built-in FES post processing effects, and so only the following effects will continue to work while a custom post processing shader is active:</p>
+<ul class="simple">
+<li>Pinhole</li>
+<li>Inverted Pinhole</li>
+<li>Slide</li>
+<li>Wipe</li>
+<li>Shake</li>
+<li>Zoom</li>
+<li>Rotation</li>
+</ul>
+<p>At any time you can revert back to built-in shaders by calling the <code class="docutils literal"><span class="pre">FES.EffectReset</span></code> API.</p>
+<div class="figure align-center" id="id19">
+<img alt="_images/pp_shader.png" src="_images/pp_shader.png" />
+<p class="caption"><span class="caption-text">Custom post processing shader with a ripple effect</span></p>
+</div>
+</div>
+<div class="section" id="shader-limitations">
+<h3>Shader Limitations</h3>
+<p>Not everything is possible in FES shaders. FES still manages your vertex data for you, so you will not be able to send any custom vertex data to the vertex shader.</p>
+</div>
+</div>
+<div class="section" id="batch-flush-debugging">
+<h2>Batch/Flush Debugging</h2>
+<p>Sometimes it can be useful to understand how many GPU draw operations are being performed by FES in the background, and why. Unity already lets you see how many draw batches are being used, but FES can further
+break down the batches into groups. To enable this feature simply call <code class="docutils literal"><span class="pre">FES.BatchDebugEnable</span></code> and give it the font and background colors to use while rendering this information:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">BatchDebugEnable</span><span class="p">(</span><span class="n">ColorRGBA</span><span class="p">.</span><span class="n">white</span><span class="p">,</span> <span class="n">ColorRGBA</span><span class="p">.</span><span class="n">black</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/batch_debug.png" class="align-center" src="_images/batch_debug.png" />
+</div>
+</div>
+<div class="section" id="audio">
+<h1>Audio</h1>
+<p>FES makes playing audio also trivial. You can have a variety of sound effects playing, and a single music track playing at the same time.</p>
+<div class="section" id="sound">
+<h2>Sound</h2>
+<p>First step of playing a sound is setting it up in a sound slot.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">SoundSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;MyBeepBloop&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the sound files must be located somewhere in your Assets under a <code class="docutils literal"><span class="pre">Resources</span></code> folder.</p>
+<p>Now you can play the sound like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">soundRef</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">SoundPlay</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.75f</span><span class="p">,</span> <span class="m">1.25f</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example plays the sound we setup at 75% volume level, and at 125% pitch. <code class="docutils literal"><span class="pre">FES.SoundPlay</span></code> also returns a <code class="docutils literal"><span class="pre">FES.SoundReference</span></code>. While the sound is still playing
+you can use the sound reference to change its volume, it’s pitch, it’s looping mode, and you can use it to stop the sound. Once the sound stops the SoundReference
+is no longer valid and can be disposed of. You can check if the sound is still playing using the <code class="docutils literal"><span class="pre">FES.SoundIsPlaying</span></code> API.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">SoundVolumeSet</span><span class="p">(</span><span class="n">mySoundRef</span><span class="p">,</span> <span class="m">0.25f</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When you no longer need a sound clip you can free up resources by calling <code class="docutils literal"><span class="pre">FES.SoundDelete</span></code>.</p>
+</div>
+<div class="section" id="music">
+<h2>Music</h2>
+<p>Music works much like sounds, with the exception that there is only ever one music track playing, and so there is no need for an equivalent of <code class="docutils literal"><span class="pre">FES.SoundReference</span></code>.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">MusicSetup</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">&quot;MyAmazingMusic&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">MusicPlay</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">MusicVolumeSet</span><span class="p">(</span><span class="m">0.25f</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you play a new music track while the old one is still playing then FES will smoothly cross-fade the music for you. That’s all there is to know about music, simple!</p>
+<p>When you no longer need a music track you can free up resources by calling <code class="docutils literal"><span class="pre">FES.MusicDelete</span></code>.</p>
+</div>
+</div>
+<div class="section" id="input">
+<h1>Input</h1>
+<p>FES simplifies input handling a little bit. You’re of course free to use your own input handling with Unity’s existing Input class, but hopefully you’ll find FES input
+a little more approachable.</p>
+<p>While you can mix Unity Input handling with FES Input handling in general there is one caveat to be aware of. FES calls <code class="docutils literal"><span class="pre">IFESGame.Update</span></code> at a fixed rate, and in the back end this behaviour relies on <code class="docutils literal"><span class="pre">MonoBehaviour.FixedUpdate</span></code>.
+As you may already know it is not advisable to call <code class="docutils literal"><span class="pre">UnityEngine.Input.GetKeyDown</span></code> and <code class="docutils literal"><span class="pre">UnityEngine.Input.GetKeyUp</span></code> inside of <code class="docutils literal"><span class="pre">MonoBehaviour.FixedUpdate</span></code> because
+these input events could happen in-between fixed updates, and will be missed entirely. FES provides it’s own Input APIs to handle this issue.</p>
+<div class="section" id="gamepads">
+<h2>Gamepads</h2>
+<p>Gamepad handling is especially easy in FES. Take a look at this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">ButtonPressed</span><span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">BTN_A</span> <span class="p">|</span> <span class="n">FES</span><span class="p">.</span><span class="n">BTN_B</span><span class="p">,</span> <span class="n">FES</span><span class="p">.</span><span class="n">PLAYER_ONE</span> <span class="p">|</span> <span class="n">FES</span><span class="p">.</span><span class="n">PLAYER_TWO</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">FES</span><span class="p">.</span><span class="n">SoundPlay</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Button codes like <code class="docutils literal"><span class="pre">FES.BTN_A</span></code> are bitmasks in FES, so you can logically <code class="docutils literal"><span class="pre">OR</span></code> them together. In
+this case the if statement is true if either player one or player two released either button A or button B since the last call to <code class="docutils literal"><span class="pre">IFESGame.Update</span></code>.</p>
+</div>
+<div class="section" id="gamepad-input-override">
+<h2>Gamepad Input Override</h2>
+<p>FES maps Player One and Player Two gamepads to keyboard strokes so gamepads are not necessary for these players. Player Three and Player Four are not mapped to the keyboard.
+By default the keyboard mapping is such that on standard sized keyboard two people should be able to play at the same time. Beware though that an average PC keyboard
+only supports 4 simultaneous key presses, some better keyboards support 6, and fancy gaming keyboards can sometime support 7+. Some modifier keys like <code class="docutils literal"><span class="pre">KeyCode.LeftShift</span></code> can
+be exempted from these rules, but in the end it’s all up to the manufacturer, and how much money they tried to save on the wiring/traces of their keyboard.</p>
+<div class="figure align-center" id="id20">
+<img alt="_images/playerone_mapping.png" src="_images/playerone_mapping.png" />
+<p class="caption"><span class="caption-text">Player one gamepad keyboard mapping.</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id21">
+<img alt="_images/playertwo_mapping.png" src="_images/playertwo_mapping.png" />
+<p class="caption"><span class="caption-text">Player two gamepad keyboard mapping.</span></p>
+</div>
+<p>If you don’t like this mapping you can easily provide your own keyboard mapping through the <code class="docutils literal"><span class="pre">FES.InputOverrideMethod</span></code> delegate, like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">InputOverride</span><span class="p">(</span><span class="n">MyOverrideMethod</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">bool</span> <span class="nf">MyOverrideMethod</span><span class="p">(</span><span class="kt">int</span> <span class="n">button</span><span class="p">,</span> <span class="kt">int</span> <span class="n">player</span><span class="p">,</span> <span class="k">out</span> <span class="kt">bool</span> <span class="n">handled</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">player</span> <span class="p">&amp;</span> <span class="n">FES</span><span class="p">.</span><span class="n">PLAYER_ONE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">button</span> <span class="p">&amp;</span> <span class="n">FES</span><span class="p">.</span><span class="n">BTN_A</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="n">handled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">LeftControl</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">handled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example we remap <code class="docutils literal"><span class="pre">FES.BTN_A</span></code> for <code class="docutils literal"><span class="pre">FES.PLAYER_ONE</span></code> to the <code class="docutils literal"><span class="pre">KeyCode.LeftControl</span></code> key. First we tell FES about our override method with the call
+to <code class="docutils literal"><span class="pre">FES.InputOverride</span></code>. Next when FES calls <code class="docutils literal"><span class="pre">MyOverrideMethod</span></code> we check which button it’s looking for, and for which player. If it’s
+<code class="docutils literal"><span class="pre">FES.BTN_A</span></code> for <code class="docutils literal"><span class="pre">FES.PLAYER_ONE</span></code>, and the key <code class="docutils literal"><span class="pre">KeyCode.LeftControl</span></code> is pressed then we return true to indicate that <code class="docutils literal"><span class="pre">FES.BTN_A</span></code> is pressed, otherwise
+we return false. We also need to set the <code class="docutils literal"><span class="pre">handled</span></code> out variable to indicate whether we handled this button ourselves or if we want to fall
+back on the FES default mapping.</p>
+</div>
+<div class="section" id="keyboard">
+<h2>Keyboard</h2>
+<p>Keyboard API is straight-forward, and similar to the <code class="docutils literal"><span class="pre">UnityEngine.Input</span></code> APIs. For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">KeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Z</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// Handle Z down</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">KeyPressed</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Z</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// Handle Z pressed in last Update() call</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">KeyReleased</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Z</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// Handle Z released in last Update() call</span>
+    <span class="p">}</span>
+
+    <span class="n">myInputStr</span> <span class="p">+=</span> <span class="n">FES</span><span class="p">.</span><span class="n">InputString</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This code should be self explanatory, the only interesting part is the last line. The <code class="docutils literal"><span class="pre">FES.InputString</span></code> method returns the string typed since last frame.
+Usually this will only contain 0-1 characters, but if the user is typing very quickly it may contain more. You may think that you could achieve the same
+functionality if you just check every <code class="docutils literal"><span class="pre">KeyCode</span></code> and add it to <code class="docutils literal"><span class="pre">myInputStr</span></code> if it’s pressed. Consider what would happen if the user is typing quickly and they
+pressed both the A and B keys in the last frame. How would you know if they meant to type AB or BA? You can’t know, but <code class="docutils literal"><span class="pre">FES.InputString</span></code> does!</p>
+</div>
+<div class="section" id="pointer">
+<h2>Pointer</h2>
+<p>The pointer input represents either mouse input, or touch screen input (single touch only). It’s simple really:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">pointerPos</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">PointerPos</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">ButtonPressed</span><span class="p">(</span><span class="n">BTN_POINTER_A</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// Handle left mouse button or touch screen pressed</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>That’s easy enough, and will work well for a mouse. However, what happens if the user is on the touch screen device, and is not even touching the screen?
+The position would not be valid. You can check if it’s valid like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">FES</span><span class="p">.</span><span class="n">PointerPosValid</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">pointerPos</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">PointerPos</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally you may find it handy to check the vertical scroll wheel movement since last update:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">scrollPos</span> <span class="p">+=</span> <span class="n">FES</span><span class="p">.</span><span class="n">PointerScrollDelta</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">FES.PointerScrollDelta</span></code> returns the scroll direction and magnitude since last <code class="docutils literal"><span class="pre">Update</span></code>. If the scroll wheel is not being scrolled or there is no mouse at all
+then 0 is returned.</p>
+</div>
+</div>
+<div class="section" id="closing-words">
+<h1>Closing Words</h1>
+<p>Thank you so much for your interest in FES. FES is a one man’s quest to create the perfect retro framework for my own projects. Along the way
+I realized others may find it useful if I put in a bit more effort to make it presentable (it turned out to be a lot more effort!). I sincerely hope
+that you enjoy the framework, and that you create something fantastic with it!</p>
+<p>Feel free to contact me at: <a class="reference external" href="mailto:pixeltrollgames&#37;&#52;&#48;gmail&#46;com">pixeltrollgames<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Martin Cietwierkowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

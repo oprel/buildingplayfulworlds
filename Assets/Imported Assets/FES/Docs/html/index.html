@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to the FES retro game framework! &#8212; FES v1.5.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/fes.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/fes_favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="figure align-center" id="id1">
+<img alt="_images/logo_large.png" src="_images/logo_large.png" />
+<p class="caption"><span class="caption-text">v1.5.0</span></p>
+</div>
+<p class="customdoclinks"><a class="reference internal" href="#"><span class="doc">Intro</span></a> | <a class="reference internal" href="features.html"><span class="doc">Features</span></a> | <a class="reference internal" href="unity.html"><span class="doc">Unity Crash Course</span></a> | <a class="reference internal" href="apiref.html"><span class="doc">API Reference</span></a> | <a class="reference internal" href="history.html"><span class="doc">Version History</span></a></p>
+<div class="section" id="welcome-to-the-fes-retro-game-framework">
+<h1>Welcome to the FES retro game framework!</h1>
+<span class="target" id="module-fes"></span><p>FES is a simple to use game framework implemented as a Unity Asset. It aims to create an ideal, low friction framework
+for making pixel-perfect retro games from the early 90s era. FES takes advantage of the portability, and the ease of deployment
+that Unity provides, but does away with the Unity Editor interface in favour of a traditional game loop, and code-only
+development. There are no scene graphs, no GameObjects, no MonoBehaviour, there is only a simple low level API for
+rendering sprites, fonts, primitives, and tilemaps. FES also provides simple APIs for handling input and playing sound and music.</p>
+<p>Have a look at this basic “hello world” program:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">HelloWorld</span> <span class="p">:</span> <span class="n">FES</span><span class="p">.</span><span class="n">IFESGame</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+        <span class="n">hw</span><span class="p">.</span><span class="n">DisplaySize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">320</span><span class="p">,</span> <span class="m">180</span><span class="p">);</span>
+        <span class="n">hw</span><span class="p">.</span><span class="n">ColorMode</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">ColorMode</span><span class="p">.</span><span class="n">RGB</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">128</span><span class="p">,</span> <span class="m">128</span><span class="p">,</span> <span class="m">128</span><span class="p">));</span>
+        <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="k">new</span> <span class="n">Vector2i</span><span class="p">(</span><span class="m">137</span><span class="p">,</span> <span class="m">80</span><span class="p">),</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">),</span> <span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Let’s have a closer look at what is happening here.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">HelloWorld</span> <span class="p">:</span> <span class="n">FES</span><span class="p">.</span><span class="n">IFESGame</span>
+</pre></div>
+</div>
+<p>Every FES game implements the <code class="docutils literal"><span class="pre">IFESGame</span></code> interface, which contains the methods: <code class="docutils literal"><span class="pre">QueryHardware</span></code>, <code class="docutils literal"><span class="pre">Initialize</span></code>, <code class="docutils literal"><span class="pre">Update</span></code> and <code class="docutils literal"><span class="pre">Render</span></code></p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span> <span class="n">QueryHardware</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">hw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FES</span><span class="p">.</span><span class="n">HardwareSettings</span><span class="p">();</span>
+
+    <span class="n">hw</span><span class="p">.</span><span class="n">DisplaySize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Size2i</span><span class="p">(</span><span class="m">320</span><span class="p">,</span> <span class="m">180</span><span class="p">);</span>
+    <span class="n">hw</span><span class="p">.</span><span class="n">ColorMode</span> <span class="p">=</span> <span class="n">FES</span><span class="p">.</span><span class="n">ColorMode</span><span class="p">.</span><span class="n">RGB</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">hw</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The QueryHardware implementation simply populates the <code class="docutils literal"><span class="pre">HardwareSettings</span></code> structure and returns it back to FES.
+In this case we are specifying that our retro display should have the resolution 320 x 180, and use the RGB color mode.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal"><span class="pre">Initialize</span></code> method the FES game can perform it’s initialization. If it’s successful it should return <code class="docutils literal"><span class="pre">true</span></code>. If <code class="docutils literal"><span class="pre">false</span></code> is returned FES will stop.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Game logic goes into the <code class="docutils literal"><span class="pre">Update</span></code> method which is called at a configurable fixed frame rate. However, in this simple program we don’t have any logic to run.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">128</span><span class="p">,</span> <span class="m">128</span><span class="p">,</span> <span class="m">128</span><span class="p">));</span>
+    <span class="n">FES</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="n">Vector2i</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span> <span class="k">new</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">),</span> <span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">Render</span></code> is where all drawing happens. Here we simply clear the screen to gray, and print the string “Hello World” in the center of the display,
+using the default FES system font.</p>
+<p>There is only one thing left, and that is to tell FES about our game. To do that we simply need to call <code class="docutils literal"><span class="pre">FES.Initialize</span></code> from a <code class="docutils literal"><span class="pre">MonoBehaviour</span></code> <code class="docutils literal"><span class="pre">GameObject</span></code> (the only <code class="docutils literal"><span class="pre">MonoBeahviour</span></code>
+object you’ll need with FES). Simply use this code:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">HelloWorldEntry</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">FES</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="k">new</span> <span class="n">HelloWorld</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>That’s it! Press Play in the Unity Editor, and you should see this output:</p>
+<img alt="_images/output_helloworld.png" class="align-center" src="_images/output_helloworld.png" />
+<p>You just made a pixel perfect Hello World game in Unity, without fiddling with camera settings, messing around with texture filters,
+or dealing with an overwhelming interface that was never designed for creation of retro style pixel perfect games.</p>
+<p>FES comes with a bare-bones game that you can use as a starting template. Please see <code class="file docutils literal"><span class="pre">Assets/FES/Scenes/MyGame</span></code> Scene and the
+<code class="file docutils literal"><span class="pre">Asssets/FES/Scripts/MyGame/MyGame.cs</span></code> source file.</p>
+<div class="section" id="more-examples">
+<h2>More Examples</h2>
+<p>Hello World examples are great, but they’re not very impressive are they? FES comes with some more entertaining example projects. Each demo project
+has is put into its own Scene, have a look at the Scenes in <code class="file docutils literal"><span class="pre">Assets/FES/Scenes</span></code>. Here is a quick preview:</p>
+<div class="figure align-center" id="id2">
+<img alt="_images/example_reel.png" src="_images/example_reel.png" />
+<p class="caption"><span class="caption-text">Feature Demo Reel in Scene <code class="file docutils literal"><span class="pre">Assets/FES/Scenes/DemoReel</span></code> and source file <code class="file docutils literal"><span class="pre">Assets/FES/Scripts/Demos/DemoReel/DemoReel.cs</span></code></span></p>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="_images/example_sfr.png" src="_images/example_sfr.png" />
+<p class="caption"><span class="caption-text">Super Flag Run in Scene <code class="file docutils literal"><span class="pre">Assets/FES/Scenes/SuperFlagRun</span></code> and source file <code class="file docutils literal"><span class="pre">Assets/FES/Scripts/Demos/SuperFlagRun/SuperFlagRun.cs</span></code></span></p>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="_images/example_bb.png" src="_images/example_bb.png" />
+<p class="caption"><span class="caption-text">BrickBust! A Complete bricker-breaker game in Scene <code class="file docutils literal"><span class="pre">Assets/FES/Scenes/BrickBust</span></code> and source file <code class="file docutils literal"><span class="pre">Assets/FES/Scripts/Demos/BrickBust/BrickBustGame.cs</span></code></span></p>
+</div>
+</div>
+<div class="section" id="what-s-next">
+<h2>What’s Next?</h2>
+<p>Learn more about the FES feature set by exploring the <a class="reference internal" href="features.html"><span class="doc">Features</span></a> section.</p>
+<p>If you’ve never used Unity before don’t worry! You only need a very basic knowledge of the Unity IDE which you can learn in the <a class="reference internal" href="unity.html"><span class="doc">Unity Crash Course</span></a> section.</p>
+<p>If you need API details check out the <a class="reference internal" href="apiref.html"><span class="doc">API Reference</span></a>. You can also have a look at the FES API directly in the <code class="docutils literal"><span class="pre">FES/Scripts/FES.cs</span></code> source file.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Martin Cietwierkowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
